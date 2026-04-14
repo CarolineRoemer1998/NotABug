@@ -16,3 +16,8 @@ func _ready() -> void:
 func handle_item_collected(item: Item):
 	collected_items.append(item)
 	print(collected_items)
+
+func reduce_fear(item: Item):
+	var amount_fear_reduction := item.item_data.fear_reduction
+	current_fear -= amount_fear_reduction
+	Signals.item_collected.emit(item)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b33sjjgwdkdag"]
+
+[node name="HealthMeter" type="ProgressBar" unique_id=643557903]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 40.0
+offset_right = -4.0
+offset_bottom = 67.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(1, 0)
+value = 100.0
+rounded = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1451392643]
+layout_mode = 0
+offset_left = -112.0
+offset_right = -12.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(1, 0)
+text = "Health"
+horizontal_alignment = 2

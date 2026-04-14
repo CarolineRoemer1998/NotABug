@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cbakbui3jksif"]
+
+[ext_resource type="Script" uid="uid://ck1otdsjs1fjb" path="res://components/ui/TutorialScreen.gd" id="1_tpeex"]
+
+[node name="TutorialScreen" type="Control" unique_id=369353349]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpeex")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=405519032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=1453486609]
+layout_mode = 2
+color = Color(0.11, 0.11, 0.11, 0.8627451)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ColorRect" unique_id=2073760328]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a temporary tutorial screen :))
+
+Your fears can't hurt you 
+if you don't believe in them!
+
+press SPACE or ENTER to start"
+horizontal_alignment = 1
+vertical_alignment = 1

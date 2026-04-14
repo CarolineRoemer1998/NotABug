@@ -6,6 +6,9 @@
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
+[ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
+[ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_4k17i")
@@ -49,10 +52,26 @@ offset_right = 640.0
 offset_bottom = 360.0
 
 [node name="HUD" type="Control" parent="UI" unique_id=222779790]
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TutorialScreen" type="Control" parent="UI" unique_id=1605005226]
-anchors_preset = 0
+[node name="FearMeter" parent="UI/HUD" unique_id=1216261520 instance=ExtResource("7_gjvd5")]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9875
+anchor_right = 0.9875
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthMeter" parent="UI/HUD" unique_id=643557903 instance=ExtResource("8_ymw2v")]
+layout_mode = 1
+offset_left = -112.0
+offset_right = -12.0
 
 [node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
 anchors_preset = 0
@@ -88,5 +107,8 @@ text = "Dev Tools (press  \" + \"  to hide/show)
 Quit Game:			Esc
 Reload Game:		Tab
 Player Dash:	      	Shift"
+
+[node name="TutorialScreen" parent="UI" unique_id=369353349 instance=ExtResource("9_ymw2v")]
+layout_mode = 1
 
 [editable path="Game/Player"]

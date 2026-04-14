@@ -18,8 +18,9 @@ var is_dashing := false
 var dash_direction := Vector2.ZERO
 
 func _process(delta: float) -> void:
-	handle_movement()
-	handle_action_input()
+	if GameManager.current_game_state == GameManager.STATE.Playing:
+		handle_movement()
+		handle_action_input()
 
 func handle_movement():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -45,6 +46,5 @@ func _on_timer_dash_duration_timeout() -> void:
 
 
 func _on_item_detector_body_entered(item: Item) -> void:
-	Signals.item_collected.emit(item)
-	var amount_fear_reduction := item.item_data.fear_reduction
-	fear_meter.value -= amount_fear_reduction
+	GameManager.reduce_fear(item)
+	
