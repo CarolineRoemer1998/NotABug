@@ -1,7 +1,24 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
+[ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
+
 [node name="Main" type="Node2D" unique_id=354944633]
 
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
 
+[node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
+
+[node name="SpawnPoints" type="Node2D" parent="Game" unique_id=779876378]
+
+[node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
+position = Vector2(72, 160)
+
 [node name="UI" type="Node2D" parent="." unique_id=907300178]
+
+[node name="HUD" type="Node2D" parent="UI" unique_id=764640308]
+
+[node name="TutorialScreen" type="Node2D" parent="UI" unique_id=441429937]
+
+[node name="WinScreen" type="Node2D" parent="UI" unique_id=138212533]
+
+[node name="LoseScreen" type="Node2D" parent="UI" unique_id=1160093991]
