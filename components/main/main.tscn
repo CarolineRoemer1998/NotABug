@@ -38,12 +38,48 @@ position = Vector2(384, 288)
 [node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
 position = Vector2(224, 240)
 
-[node name="UI" type="Node2D" parent="." unique_id=907300178]
+[node name="UI" type="Control" parent="." unique_id=443723934]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
 
-[node name="HUD" type="Node2D" parent="UI" unique_id=764640308]
+[node name="HUD" type="Control" parent="UI" unique_id=222779790]
+anchors_preset = 0
 
-[node name="TutorialScreen" type="Node2D" parent="UI" unique_id=441429937]
+[node name="TutorialScreen" type="Control" parent="UI" unique_id=1605005226]
+anchors_preset = 0
 
-[node name="WinScreen" type="Node2D" parent="UI" unique_id=138212533]
+[node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
+anchors_preset = 0
 
-[node name="LoseScreen" type="Node2D" parent="UI" unique_id=1160093991]
+[node name="LoseScreen" type="Control" parent="UI" unique_id=753610665]
+anchors_preset = 0
+
+[node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DevUI" unique_id=1266564932]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Dev Tools (press  \" + \"  to hide/show)
+
+Quit Game:			Esc
+Reload Game:		Tab"

@@ -1,6 +1,8 @@
 class_name Main
 extends Node2D
 
+@onready var dev_ui: Control = $UI/DevUI
+
 @export var spawn_points : Array[Node2D]
 @export var item_variants : Dictionary[ItemData, bool] # true: ItemData hat SpawnPoint zugewiesen bekommen
 
@@ -30,3 +32,14 @@ func get_random_item_variant() -> ItemData:
 	var random_variant: ItemData = available_items.pick_random()
 	item_variants[random_variant] = true
 	return random_variant
+
+func _process(delta: float) -> void:
+	handle_inputs()
+
+func handle_inputs():
+	if Input.is_action_just_pressed("end_game"):
+		get_tree().quit()
+	elif Input.is_action_just_pressed("reload_game"):
+		get_tree().reload_current_scene()
+	elif Input.is_action_just_pressed("show_or_hide_dev_tools"):
+		dev_ui.visible = !dev_ui.visible

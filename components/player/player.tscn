@@ -32,3 +32,12 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924337548]
 shape = SubResource("CapsuleShape2D_wa6cj")
+
+[node name="TimerDashCooldown" type="Timer" parent="." unique_id=1897077925]
+one_shot = true
+
+[node name="TimerDashDuration" type="Timer" parent="." unique_id=1268488096]
+one_shot = true
+
+[connection signal="timeout" from="TimerDashCooldown" to="." method="_on_timer_dash_cooldown_timeout"]
+[connection signal="timeout" from="TimerDashDuration" to="." method="_on_timer_dash_duration_timeout"]
