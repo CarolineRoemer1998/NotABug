@@ -88,3 +88,5 @@ text = "Dev Tools (press  \" + \"  to hide/show)
 Quit Game:			Esc
 Reload Game:		Tab
 Player Dash:	      	Shift"
+
+[editable path="Game/Player"]

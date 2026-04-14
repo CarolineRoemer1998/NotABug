@@ -48,6 +48,59 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDetector" unique_id=421785177]
 shape = SubResource("CapsuleShape2D_kfe3d")
 
+[node name="UI" type="Control" parent="." unique_id=1900340849]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="FearMeter" type="ProgressBar" parent="UI" unique_id=329884634]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 8.0
+offset_right = -4.0
+offset_bottom = 35.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(1, 0)
+value = 100.0
+rounded = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/FearMeter" unique_id=240076592]
+layout_mode = 0
+offset_left = -112.0
+offset_right = -12.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(1, 0)
+text = "Fear"
+horizontal_alignment = 2
+
+[node name="LifeMeter" type="ProgressBar" parent="UI" unique_id=1460619949]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 40.0
+offset_right = -4.0
+offset_bottom = 67.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(1, 0)
+value = 100.0
+rounded = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/LifeMeter" unique_id=621260845]
+layout_mode = 0
+offset_left = -112.0
+offset_right = -12.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(1, 0)
+text = "Health"
+horizontal_alignment = 2
+
 [connection signal="timeout" from="TimerDashCooldown" to="." method="_on_timer_dash_cooldown_timeout"]
 [connection signal="timeout" from="TimerDashDuration" to="." method="_on_timer_dash_duration_timeout"]
 [connection signal="body_entered" from="ItemDetector" to="." method="_on_item_detector_body_entered"]

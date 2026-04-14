@@ -1,16 +1,19 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var fear_meter: ProgressBar = $UI/FearMeter
+@onready var life_meter: ProgressBar = $UI/LifeMeter
+
 @onready var timer_dash_cooldown: Timer = $TimerDashCooldown
-@onready var timer_dash_duration: Timer = $TimerDashDuration
 var dash_cooldown_in_seconds := 3.0
+
+@onready var timer_dash_duration: Timer = $TimerDashDuration
 var dash_duration_in_seconds := 0.3
 
 const SPEED_NORMAL := 100.0
 const SPEED_DASH := 300.0
 
 var current_speed := SPEED_NORMAL
-
 var is_dashing := false
 var dash_direction := Vector2.ZERO
 
@@ -43,3 +46,5 @@ func _on_timer_dash_duration_timeout() -> void:
 
 func _on_item_detector_body_entered(item: Item) -> void:
 	Signals.item_collected.emit(item)
+	var amount_fear_reduction := item.item_data.fear_reduction
+	fear_meter.value -= amount_fear_reduction
