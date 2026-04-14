@@ -1,17 +1,42 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
+[ext_resource type="Script" uid="uid://1hxp663br1o0" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
+[ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="2_wfiak"]
+[ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/Hat.tres" id="3_w8ifq"]
 
-[node name="Main" type="Node2D" unique_id=354944633]
+[node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_4k17i")
+spawn_points = [NodePath("Game/ItemSpawnPositions/Spawn1"), NodePath("Game/ItemSpawnPositions/Spawn2"), NodePath("Game/ItemSpawnPositions/Spawn3"), NodePath("Game/ItemSpawnPositions/Spawn4"), NodePath("Game/ItemSpawnPositions/Spawn5")]
+item_variants = Dictionary[ExtResource("2_wfiak"), bool]({
+ExtResource("3_w8ifq"): false
+})
 
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
-[node name="SpawnPoints" type="Node2D" parent="Game" unique_id=779876378]
+[node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
 position = Vector2(72, 160)
+
+[node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
+
+[node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
+position = Vector2(168, 80)
+
+[node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
+position = Vector2(392, 48)
+
+[node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
+position = Vector2(536, 184)
+
+[node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
+position = Vector2(384, 288)
+
+[node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
+position = Vector2(224, 240)
 
 [node name="UI" type="Node2D" parent="." unique_id=907300178]
 
