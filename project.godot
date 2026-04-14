@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="NotABug"
+run/main_scene="uid://vrcjw3jy2tvt"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,11 @@ config/icon="res://icon.svg"
 GameManager="*uid://b43itbgh0plmn"
 Helper="*uid://fuom451chqqb"
 Signals="*uid://bb8cyr5xoq68y"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
 
 [physics]
 

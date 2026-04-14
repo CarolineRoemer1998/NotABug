@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
+
+[node name="Main" type="Node2D" unique_id=354944633]
+
+[node name="Game" type="Node2D" parent="." unique_id=1669510031]
+
+[node name="UI" type="Node2D" parent="." unique_id=907300178]
