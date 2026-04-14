@@ -36,9 +36,10 @@ func handle_action_input():
 			timer_dash_cooldown.start(dash_cooldown_in_seconds)
 			timer_dash_duration.start(dash_duration_in_seconds)
 
-func _on_timer_dash_cooldown_timeout() -> void:
-	pass
-
 func _on_timer_dash_duration_timeout() -> void:
 	is_dashing = false
 	current_speed = SPEED_NORMAL
+
+
+func _on_item_detector_body_entered(item: Item) -> void:
+	Signals.item_collected.emit(item)
