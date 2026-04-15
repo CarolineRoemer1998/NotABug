@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
-[ext_resource type="Script" path="res://components/main/main.gd" id="1_4k17i"]
+[ext_resource type="Script" uid="uid://1hxp663br1o0" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
-[ext_resource type="Script" path="res://components/items/ItemData.gd" id="2_wfiak"]
+[ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="2_wfiak"]
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
+[ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
+[ext_resource type="PackedScene" uid="uid://cec62wwecxh2j" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnf1j"]
 size = Vector2(83, 22)
@@ -52,7 +54,15 @@ ExtResource("4_4t43m"): false,
 ExtResource("5_lnf1j"): false
 })
 
+[node name="Raumlayout" type="Sprite2D" parent="." unique_id=835788367]
+visible = false
+position = Vector2(1304, 366)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_gjvd5")
+
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
+position = Vector2(-446.585, -580.945)
+scale = Vector2(5.72, 5.72)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Game" unique_id=93905533]
 position = Vector2(358, 218)
@@ -86,7 +96,7 @@ position = Vector2(138, -6)
 shape = SubResource("RectangleShape2D_ymw2v")
 
 [node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
-position = Vector2(329, 172)
+position = Vector2(326.8, 111.33)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
@@ -94,10 +104,14 @@ patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpaw
 [node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
-position = Vector2(93, 239)
+position = Vector2(98.51, 252.865)
 
 [node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
 visible = false
+
+[node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
+position = Vector2(18.375494, 0.097416155)
+zoom = Vector2(0.725, 0.725)
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
@@ -161,10 +175,7 @@ position = Vector2(55, 7)
 position = Vector2(40, 169)
 shape = SubResource("RectangleShape2D_jj6qt")
 
-[node name="StaticBody2D10" type="StaticBody2D" parent="Game" unique_id=1897838707]
-position = Vector2(118, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D10" unique_id=145393541]
+[node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
 visible = false
@@ -216,10 +227,5 @@ text = "Dev Tools (press  \" + \"  to hide/show)
 Quit Game:			Esc
 Reload Game:		Tab
 Player Dash:	      	Shift"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1385398906]
-position = Vector2(42, 29)
-collision_layer = 16
-collision_mask = 16
 
 [editable path="Game/Player"]

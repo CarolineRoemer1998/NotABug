@@ -10,8 +10,8 @@ var dash_cooldown_in_seconds := 3.0
 @onready var timer_dash_duration: Timer = $TimerDashDuration
 var dash_duration_in_seconds := 0.3
 
-const SPEED_NORMAL := 100.0
-const SPEED_DASH := 300.0
+const SPEED_NORMAL := 500.0
+const SPEED_DASH := 1000.0
 
 var current_speed := SPEED_NORMAL
 var is_dashing := false
