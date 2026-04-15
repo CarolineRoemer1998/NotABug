@@ -96,9 +96,6 @@ patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpaw
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
 position = Vector2(93, 239)
 
-[node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
-visible = false
-
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
 [node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
@@ -167,7 +164,6 @@ position = Vector2(118, -3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D10" unique_id=145393541]
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -186,7 +182,6 @@ anchors_preset = 0
 anchors_preset = 0
 
 [node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,7 +190,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DevUI" unique_id=1266564932]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,7 +202,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Dev Tools (press  \" + \"  to hide/show)

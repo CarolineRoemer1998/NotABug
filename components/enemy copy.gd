@@ -12,10 +12,10 @@ enum State { PATROL, CHASE }
 @export var allow_diagonal_movement: bool = true
 @export var Goal: Node2D
 
-@export var patrol_speed: float = 55.0
-@export var chase_speed: float = 85.0
-@export var chase_speed_close: float = 62.0
-@export var chase_speed_aggro: float = 52.0
+@export var patrol_speed: float = 42.0
+@export var chase_speed: float = 65.0
+@export var chase_speed_close: float = 48.0
+@export var chase_speed_aggro: float = 43.0
 @export var melee_boost_speed: float = 105.0
 @export var melee_boost_time: float = 0.35
 @export var patrol_wait_min: float = 0.4
@@ -23,9 +23,9 @@ enum State { PATROL, CHASE }
 
 @export var sight_distance: float = 125.0
 @export var sight_half_angle_deg: float = 34.0
-@export var sight_memory_time: float = 1.2
-@export var chase_lose_distance: float = 150.0
-@export var search_time_after_los: float = 2
+@export var sight_memory_time: float = 2.5
+@export var chase_lose_distance: float = 180.0
+@export var search_time_after_los: float = 2.6
 
 @export var close_attack_radius: float = 35.0
 @export var far_attack_radius: float = 110.0
