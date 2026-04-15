@@ -295,4 +295,5 @@ texture = ExtResource("1_1sre2")
 8:19/0 = 0
 
 [resource]
+tile_size = Vector2i(26, 26)
 sources/0 = SubResource("TileSetAtlasSource_y2jwi")
