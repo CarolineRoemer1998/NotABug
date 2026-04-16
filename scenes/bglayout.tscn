@@ -50,8 +50,8 @@ texture = ExtResource("1_6rgvi")
 metadata/_edit_lock_ = true
 
 [node name="Node2D" parent="." unique_id=559792218 instance=ExtResource("2_q778t")]
-position = Vector2(224.39, 692.375)
-scale = Vector2(3.68, 1)
+position = Vector2(194.05, 692.375)
+scale = Vector2(3.055, 1)
 
 [node name="CollisionShape2D" parent="Node2D/StaticBody2D" parent_id_path=PackedInt32Array(559792218, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 31.47992)
@@ -79,7 +79,7 @@ shape = SubResource("RectangleShape2D_ndw6h")
 scale = Vector2(1, 1.2189586)
 
 [node name="Node2D4" parent="." unique_id=244924588 instance=ExtResource("2_q778t")]
-position = Vector2(676.00006, -215)
+position = Vector2(676, -236.785)
 scale = Vector2(10.715, 0.365)
 
 [node name="Node2D5" parent="." unique_id=1232287713 instance=ExtResource("2_q778t")]
@@ -100,7 +100,7 @@ position = Vector2(2603, 381.00003)
 scale = Vector2(0.395, 13.405)
 
 [node name="Node2D8" parent="." unique_id=1822901440 instance=ExtResource("2_q778t")]
-position = Vector2(1921, -320)
+position = Vector2(1920.9999, -407)
 scale = Vector2(6.04, 1.585)
 
 [node name="CollisionShape2D" parent="Node2D8/StaticBody2D" parent_id_path=PackedInt32Array(1822901440, 408825907) index="0" unique_id=309677546]
@@ -109,24 +109,24 @@ scale = Vector2(1, 0.9999996)
 shape = SubResource("RectangleShape2D_3nrbm")
 
 [node name="Node2D9" parent="." unique_id=320304978 instance=ExtResource("2_q778t")]
-position = Vector2(1914, -511)
+position = Vector2(1913.9999, -598)
 scale = Vector2(9.345, 0.365)
 
 [node name="Node2D10" parent="." unique_id=1674506919 instance=ExtResource("2_q778t")]
-position = Vector2(1339.0001, -373.00003)
+position = Vector2(1339.0001, -459.99994)
 scale = Vector2(0.365, 3.14)
 
 [node name="Node2D11" parent="." unique_id=1089586714 instance=ExtResource("2_q778t")]
-position = Vector2(2498, -405)
+position = Vector2(2498, -492)
 scale = Vector2(0.35, 2.67)
 
 [node name="Node2D12" parent="." unique_id=1058303596 instance=ExtResource("2_q778t")]
-position = Vector2(2553, -241)
+position = Vector2(2553, -328)
 scale = Vector2(1.165, 0.35)
 
 [node name="Node2D13" parent="." unique_id=970382513 instance=ExtResource("2_q778t")]
 position = Vector2(1858, 293)
-scale = Vector2(7.715, 0.825)
+scale = Vector2(7.03, 0.825)
 
 [node name="CollisionShape2D" parent="Node2D13/StaticBody2D" parent_id_path=PackedInt32Array(970382513, 408825907) index="0" unique_id=309677546]
 position = Vector2(-0.35395813, 31.61438)
@@ -155,16 +155,16 @@ position = Vector2(1752, 29.00003)
 scale = Vector2(0.395, 4.75)
 
 [node name="Node2D17" parent="." unique_id=1230037995 instance=ExtResource("2_q778t")]
-position = Vector2(2060, -191)
+position = Vector2(2060, -278)
 scale = Vector2(0.395, 1.73)
 
 [node name="Node2D19" parent="." unique_id=1206541008 instance=ExtResource("2_q778t")]
-position = Vector2(2265, -176)
+position = Vector2(2265, -263)
 scale = Vector2(0.395, 1.37)
 
 [node name="Node2D20" parent="." unique_id=154372215 instance=ExtResource("2_q778t")]
-position = Vector2(2286, 54.000008)
-scale = Vector2(5.295, 0.6)
+position = Vector2(2302.945, 54)
+scale = Vector2(4.35, 0.6)
 
 [node name="CollisionShape2D" parent="Node2D20/StaticBody2D" parent_id_path=PackedInt32Array(154372215, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 30.83329)
