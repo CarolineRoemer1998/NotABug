@@ -6,9 +6,48 @@
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
+[ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
 [ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://cec62wwecxh2j" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnf1j"]
+size = Vector2(83, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjvd5"]
+size = Vector2(20, 71)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lnf1j"]
+vertices = PackedVector2Array(248.03906, 88.109375, 248.89063, 12.890625, 322.6172, 12.109375, 320.1172, 80.38281, 299.32813, 106.96094, 263.89063, 105.09375, 171.13281, 79.1875, 170.14063, 11.1484375, 218, 11.8515625, 218, 70.140625, 219.25781, 115.59375, 28.0625, 124.5625, 28.921875, 6.3125, 136.64063, 9.6796875, 93.328125, 135.60938, 131.65625, 148.3125, 92.64844, 153.15625, 362.5625, 11.9296875, 499.8828, 11.0625, 498.9297, 96.53125, 391, 93.74219, 358.71094, 97.703125, 391, 124.90625, 366, 169.5625, 497.9297, 125.89844, 497.6875, 162.5, 462.03125, 161.77344, 404.1172, 177, 403.1172, 258.78125, 283.1328, 256.21094, 366, 199.64063, 497.10938, 259.85156, 428.39844, 258.8672, 430.22656, 177, 464.84375, 192.74219, 254.32813, 174.40625, 251.35156, 258.75, 28.828125, 253.22656, 27.15625, 159.10938, 150.96094, 149.64844, 497.8828, 193.71094, 283.85938, 202.64063, 158.09375, 80.27344, 258.27344, 117.28125, 308.82813, 119.25781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(14, 13, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 17, 20, 22, 23), PackedInt32Array(24, 25, 26, 22), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 36, 37, 38, 16), PackedInt32Array(35, 16, 15, 39), PackedInt32Array(34, 40, 31), PackedInt32Array(26, 34, 33, 22), PackedInt32Array(22, 33, 27, 23), PackedInt32Array(29, 41, 30), PackedInt32Array(27, 30, 23), PackedInt32Array(35, 39, 42, 6, 10), PackedInt32Array(35, 10, 43, 23), PackedInt32Array(23, 43, 5, 44), PackedInt32Array(44, 21, 23), PackedInt32Array(44, 5, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(17, 150, 19, 263, 261, 269, 264, 184, 356, 180, 356, 190, 274, 193, 273, 266, 413, 269, 414, 187, 420, 187, 418.17975, 268.72595, 507, 270, 508, 184, 474, 183, 473, 172, 507.6317, 172.71349, 508, 116, 401, 115, 401, 104, 508.82007, 106.80005, 510, 1, 353, 2, 349, 91, 312, 107, 330, 84, 333, 2, 239, 3, 238, 92, 252, 107, 229, 106, 228, 70, 228, 2, 160, 1, 161, 70, 149, 71, 142, 139, 147, 0, 19, -4, 18, 133, 83, 144)])
+sample_partition_type = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymw2v"]
+size = Vector2(237, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7uxv"]
+size = Vector2(8, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvprt"]
+size = Vector2(14, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54wvq"]
+size = Vector2(8, 68.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eaec"]
+size = Vector2(89, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8136a"]
+size = Vector2(20, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxrab"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj6qt"]
+size = Vector2(58, 21)
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_4k17i")
@@ -19,33 +58,131 @@ ExtResource("4_4t43m"): false,
 ExtResource("5_lnf1j"): false
 })
 
+[node name="Raumlayout" type="Sprite2D" parent="." unique_id=835788367]
+visible = false
+position = Vector2(1304, 366)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_gjvd5")
+
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
+position = Vector2(-446.585, -580.945)
+scale = Vector2(5.72, 5.72)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Game" unique_id=93905533]
+position = Vector2(358, 218)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D2" unique_id=1061876925]
+position = Vector2(4.5, -2)
+shape = SubResource("RectangleShape2D_lnf1j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Game" unique_id=913010985]
+position = Vector2(57, 303)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=818616586]
+position = Vector2(252, -54)
+shape = SubResource("RectangleShape2D_gjvd5")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1178839345]
+position = Vector2(42, 29)
+navigation_polygon = SubResource("NavigationPolygon_lnf1j")
+
+[node name="Wall" type="StaticBody2D" parent="Game" unique_id=67498972]
+position = Vector2(57, 303)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Wall" unique_id=200123891]
+position = Vector2(138, -6)
+shape = SubResource("RectangleShape2D_ymw2v")
+
+[node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(326.8, 111.33)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
 [node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
-position = Vector2(72, 160)
+position = Vector2(98.51, 252.865)
+
+[node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
+position = Vector2(18.375494, 0.097416155)
+zoom = Vector2(0.725, 0.725)
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
 [node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
-position = Vector2(168, 80)
+position = Vector2(121, 64)
 
 [node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
-position = Vector2(392, 48)
+position = Vector2(492, 68)
 
 [node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
-position = Vector2(536, 184)
+position = Vector2(506, 245)
 
 [node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
-position = Vector2(384, 288)
+position = Vector2(389, 269)
 
 [node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
-position = Vector2(224, 240)
+position = Vector2(327, 81)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Game" unique_id=1008137485]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D3" unique_id=619576808]
+position = Vector2(189, 106)
+shape = SubResource("RectangleShape2D_y7uxv")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Game" unique_id=280783416]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D4" unique_id=147455268]
+position = Vector2(271, 86.5)
+shape = SubResource("RectangleShape2D_mvprt")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Game" unique_id=425212502]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D5" unique_id=1409337387]
+position = Vector2(383, 74.75)
+shape = SubResource("RectangleShape2D_54wvq")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Game" unique_id=461946721]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D6" unique_id=658409374]
+position = Vector2(489, 139)
+shape = SubResource("RectangleShape2D_4eaec")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Game" unique_id=503443688]
+position = Vector2(3, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D7" unique_id=2131764259]
+position = Vector2(455, 244)
+shape = SubResource("RectangleShape2D_8136a")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Game" unique_id=1873674562]
+position = Vector2(22, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D8" unique_id=1790831893]
+position = Vector2(501, 200)
+shape = SubResource("RectangleShape2D_fxrab")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Game" unique_id=395831918]
+position = Vector2(55, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D9" unique_id=1462519352]
+position = Vector2(40, 169)
+shape = SubResource("RectangleShape2D_jj6qt")
+
+[node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -80,6 +217,7 @@ anchors_preset = 0
 anchors_preset = 0
 
 [node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,6 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DevUI" unique_id=1266564932]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +239,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Dev Tools (press  \" + \"  to hide/show)
