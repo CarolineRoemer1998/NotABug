@@ -12,10 +12,10 @@ enum State { PATROL, CHASE }
 @export var allow_diagonal_movement: bool = true
 @export var Goal: Node2D
 
-@export var patrol_speed: float = 55.0
-@export var chase_speed: float = 85.0
-@export var chase_speed_close: float = 62.0
-@export var chase_speed_aggro: float = 52.0
+@export var patrol_speed: float = 42.0
+@export var chase_speed: float = 65.0
+@export var chase_speed_close: float = 48.0
+@export var chase_speed_aggro: float = 43.0
 @export var melee_boost_speed: float = 105.0
 @export var melee_boost_time: float = 0.35
 @export var patrol_wait_min: float = 0.4
