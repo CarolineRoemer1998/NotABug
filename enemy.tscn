@@ -267,7 +267,6 @@ position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_7k104")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=648662518]
-visible = false
 scale = Vector2(0.59999985, 0.58928514)
 collision_layer = 2
 

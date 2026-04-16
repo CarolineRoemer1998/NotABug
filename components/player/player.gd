@@ -1,8 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var fear_meter: ProgressBar = $UI/FearMeter
-@onready var life_meter: ProgressBar = $UI/LifeMeter
+@onready var fear_meter: ProgressBar = get_node_or_null("UI/FearMeter") as ProgressBar
+@onready var life_meter: ProgressBar = get_node_or_null("UI/LifeMeter") as ProgressBar
 
 @onready var timer_dash_cooldown: Timer = $TimerDashCooldown
 var dash_cooldown_in_seconds := 3.0
@@ -20,6 +20,13 @@ var dash_direction := Vector2.ZERO
 @export var max_life: int = 10
 @export var damage_iframe_seconds: float = 0.35
 var _damage_iframe_left: float = 0.0
+var _life: int = 0
+
+func _ready() -> void:
+	_life = max_life
+	if life_meter != null:
+		life_meter.max_value = max_life
+		life_meter.value = max_life
 
 func _process(delta: float) -> void:
 	if GameManager.current_game_state == GameManager.STATE.Playing:
@@ -57,13 +64,13 @@ func take_damage(amount: int) -> void:
 
 	_damage_iframe_left = damage_iframe_seconds
 
-	if life_meter.max_value <= 0:
-		life_meter.max_value = max_life
-	if life_meter.value <= 0:
-		life_meter.value = life_meter.max_value
+	_life = maxi(0, _life - amount)
+	if life_meter != null:
+		if life_meter.max_value <= 0:
+			life_meter.max_value = max_life
+		life_meter.value = float(_life)
 
-	life_meter.value = maxf(0.0, life_meter.value - amount)
-	if life_meter.value <= 0.0:
+	if _life <= 0:
 		queue_free()
 
 

@@ -8,10 +8,10 @@
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
-[ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
-[ext_resource type="PackedScene" uid="uid://cec62wwecxh2j" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
-[ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
-[ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
+[ext_resource type="PackedScene" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
+[ext_resource type="PackedScene" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
+[ext_resource type="PackedScene" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lnf1j"]
 vertices = PackedVector2Array(312.6875, 88.296875, 312.85156, 15.7734375, 340.04688, 17.3125, 339.09375, 125.140625, 292.85156, 125.84375, 272.2578, 86.22656, 443.9922, 39.820313, 443.1328, 16.4375, 490.1875, 17.148438, 488.8828, 94.67969, 395.39844, 303.7422, 395.92188, 325.92188, 270.35938, 325.4297, 270.03906, 210.13281, 286.6797, 209.79688, 185.90625, 214.53906, 186.60156, 118.78125, 226.46875, 120.02344, 226.46875, 138.07813, 171.75, 97.78125, 171.75, 193.46875, 142.54688, 192.78125, 43.226563, 191.42188, 41.242188, 7.6796875, 176.11719, 9.1875, 176.11719, 9.203125, 103.53125, 190.54688, 256.17188, 187.35156, 256.6875, 325.3672, 41.257813, 323.35938, 487.22656, 207.46094, 489.8125, 324.4297, 410.03906, 325.52344, 409.17188, 303.7422, 352.4297, 16.921875, 392.15625, 15.796875, 392.8672, 41.90625, 353.71094, 123.671875, 437.9922, 123.85156, 406.85156, 41.34375, 410.07813, 278.34375, 409.90625, 207.77344, 396.10156, 279.59375, 395.39063, 207.78125, 326.35156, 207.61719, 287.29688, 188.14063, 325.53125, 190.10938, 42.859375, 213.07813, 102.28125, 213.60938, 226.5625, 10.3125, 225.14063, 97.953125, 142.54688, 215.21875, 407.20313, 15.9921875, 427.7578, 15.859375, 428.10938, 40.289063, 487.3672, 189.92969, 436.8828, 143.27344, 291.70313, 144.00781, 297.10156, 12.09375, 297.10156, 36.492188, 270.52344, 36.851563, 244.02344, 11.359375, 241.39063, 108.88281, 242, 139.07813)
@@ -68,9 +68,6 @@ gas_combat_radius = 160.0
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
 position = Vector2(123.52885, 330.5848)
-
-[node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
 zoom = Vector2(0.805, 0.805)
