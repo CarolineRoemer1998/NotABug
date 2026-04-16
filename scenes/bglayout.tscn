@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="1_6rgvi"]
 [ext_resource type="PackedScene" uid="uid://djtbniwgojuhe" path="res://scenes/Redblock.tscn" id="2_q778t"]
+[ext_resource type="PackedScene" uid="uid://dpaydyyn1pjfq" path="res://scenes/wobble_overlay.tscn" id="3_y7qsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q778t"]
 size = Vector2(124, 71.709785)
@@ -324,6 +325,24 @@ scale = Vector2(2.565, 1.155)
 [node name="CollisionShape2D" parent="Node2D47/StaticBody2D" parent_id_path=PackedInt32Array(2128965227, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 21.52533)
 
+[node name="Node2D18" parent="." unique_id=1265753757 instance=ExtResource("3_y7qsj")]
+visible = false
+position = Vector2(49, 705)
+scale = Vector2(3.995, 3.995)
+
+[node name="Testimage" parent="Node2D18" index="1" unique_id=1250085932]
+position = Vector2(89.23654, -112.39049)
+scale = Vector2(3.156289, 3.7781606)
+
+[node name="Node2D48" parent="." unique_id=82575817 instance=ExtResource("3_y7qsj")]
+visible = false
+position = Vector2(1318, 1077)
+scale = Vector2(3.995, 3.995)
+
+[node name="Testimage" parent="Node2D48" index="1" unique_id=1250085932]
+position = Vector2(156.69586, -60.20024)
+scale = Vector2(5.264393, 2.1472154)
+
 [editable path="Node2D"]
 [editable path="Node2D2"]
 [editable path="Node2D3"]
@@ -347,3 +366,5 @@ position = Vector2(0, 21.52533)
 [editable path="Node2D33"]
 [editable path="Node2D35"]
 [editable path="Node2D47"]
+[editable path="Node2D18"]
+[editable path="Node2D48"]
