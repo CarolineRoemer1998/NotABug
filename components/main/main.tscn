@@ -110,9 +110,6 @@ patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpaw
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
 position = Vector2(98.51, 252.865)
 
-[node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
 position = Vector2(18.375494, 0.097416155)
 zoom = Vector2(0.725, 0.725)
@@ -182,7 +179,6 @@ shape = SubResource("RectangleShape2D_jj6qt")
 [node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
