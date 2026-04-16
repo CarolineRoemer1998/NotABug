@@ -22,7 +22,8 @@ var dash_direction := Vector2.ZERO
 var _damage_iframe_left: float = 0.0
 
 func _process(delta: float) -> void:
-	_damage_iframe_left = maxf(0.0, _damage_iframe_left - delta)
+	if GameManager.current_game_state == GameManager.STATE.Playing:
+		_damage_iframe_left = maxf(0.0, _damage_iframe_left - delta)
 	handle_movement()
 	handle_action_input()
 
@@ -67,6 +68,5 @@ func take_damage(amount: int) -> void:
 
 
 func _on_item_detector_body_entered(item: Item) -> void:
-	Signals.item_collected.emit(item)
-	var amount_fear_reduction := item.item_data.fear_reduction
-	fear_meter.value -= amount_fear_reduction
+	GameManager.reduce_fear(item)
+	
