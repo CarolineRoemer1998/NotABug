@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cec62wwecxh2j"]
+[gd_scene format=3 uid="uid://bkwagqfwbb65t"]
 
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="1_6rgvi"]
 [ext_resource type="PackedScene" uid="uid://djtbniwgojuhe" path="res://scenes/Redblock.tscn" id="2_q778t"]

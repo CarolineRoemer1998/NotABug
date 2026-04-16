@@ -21,17 +21,20 @@ enum State { PATROL, CHASE }
 @export var patrol_wait_min: float = 0.4
 @export var patrol_wait_max: float = 1.1
 
-@export var sight_distance: float = 125.0
-@export var sight_half_angle_deg: float = 34.0
-@export var sight_memory_time: float = 1.2
-@export var chase_lose_distance: float = 150.0
-@export var search_time_after_los: float = 2
+# Vision cone tuning (distance shorter, cone fatter).
+@export var sight_distance: float = 200.0
+@export var sight_half_angle_deg: float = 55.0
+@export var sight_memory_time: float = 2.0
+@export var chase_lose_distance: float = 300.0
+@export var search_time_after_los: float = 3.0
 
-@export var close_attack_radius: float = 35.0
-@export var far_attack_radius: float = 110.0
+@export var close_attack_radius: float = 70.0
+@export var far_attack_radius: float = 220.0
+# Kept for backwards compatibility with existing scenes; actual melee trigger
+# distance is max(melee_adjacent, melee_range).
 @export var melee_adjacent: float = 22.0
 @export var melee_damage: int = 1
-@export var melee_range: float = 22.0
+@export var melee_range: float = 44.0
 
 @export var melee_cooldown: float = 0.9
 @export var gas_cooldown: float = 5.0
@@ -40,6 +43,7 @@ enum State { PATROL, CHASE }
 @export var gas_duration: float = 10.0
 @export var gas_patrol_radius: float = 72.0
 @export var gas_patrol_chance: float = 0.1
+@export var gas_combat_radius: float = 96.0
 
 @export var projectile_scene: PackedScene
 @export var gas_zone_scene: PackedScene
@@ -68,6 +72,7 @@ var _in_see_area: bool = false
 var _sees_player: bool = false
 var _last_known_player_pos: Vector2 = Vector2.ZERO
 var _search_left: float = 0.0
+var _in_cone: bool = false
 
 var _melee_cd: float = 0.0
 var _gas_cd: float = 0.0
@@ -81,6 +86,8 @@ const CHASE_REPATH_INTERVAL: float = 0.12
 func _ready() -> void:
 	_build_waypoints()
 	far_attack_radius = minf(far_attack_radius, sight_distance)
+	# Make sure melee can actually trigger when melee_range is tuned per scene.
+	melee_adjacent = maxf(melee_adjacent, melee_range)
 	# Larger values reduce wedging at tight nav corners vs the capsule collider.
 	_nav.path_desired_distance = 10.0
 	_nav.target_desired_distance = 16.0
@@ -92,10 +99,7 @@ func _deferred_nav_setup() -> void:
 	await get_tree().physics_frame
 	if _waypoints.is_empty():
 		return
-	if random_patrol:
-		_patrol_index = _pick_random_patrol_index_excluding(-1)
-	else:
-		_patrol_index = 0
+	_patrol_index = 0
 	_nav.target_position = _waypoints[_patrol_index].global_position
 
 
@@ -114,6 +118,9 @@ func _build_waypoints() -> void:
 		_waypoints.append(Goal)
 	if _waypoints.is_empty():
 		push_warning("Enemy: no patrol waypoints (set patrol_points, patrol_route_parent, or Goal).")
+		return
+	if random_patrol and _waypoints.size() > 1:
+		_waypoints.shuffle()
 
 
 func _physics_process(delta: float) -> void:
@@ -153,6 +160,7 @@ func _tick_cooldowns(delta: float) -> void:
 func _update_sight(delta: float) -> void:
 	_last_seen_player_left += delta
 	_sees_player = false
+	_in_cone = false
 
 	# Keep a best-effort player reference (DetectionArea sets it, but if that
 	# doesn’t happen we try to find a player by group).
@@ -163,6 +171,7 @@ func _update_sight(delta: float) -> void:
 
 	if player == null or not is_instance_valid(player):
 		return
+	_in_cone = _player_in_cone()
 
 	if _can_see_player():
 		_sees_player = true
@@ -171,16 +180,32 @@ func _update_sight(delta: float) -> void:
 		_last_known_player_pos = player.global_position
 		_search_left = search_time_after_los
 	elif _has_aggro and _search_left > 0.0 and is_instance_valid(player):
-		# Keep updating last known position while the player remains in the large
-		# "See" awareness area, even if LOS is broken.
-		if _in_see_area:
+		# Keep updating last known position while the player remains inside the
+		# vision cone, even if LOS is broken.
+		if _in_cone:
 			_last_known_player_pos = player.global_position
 
 	# Drop aggro if the player is far away for a while.
 	if _has_aggro:
 		var d := global_position.distance_to(player.global_position)
-		if (not _in_see_area) and d > chase_lose_distance and _last_seen_player_left > sight_memory_time and _search_left <= 0.0:
+		if (not _in_cone) and d > chase_lose_distance and _last_seen_player_left > sight_memory_time and _search_left <= 0.0:
 			_has_aggro = false
+
+func _player_in_cone() -> bool:
+	if player == null or not is_instance_valid(player):
+		return false
+	var to_p := player.global_position - global_position
+	var dist := to_p.length()
+	if dist <= 0.01:
+		return true
+	if dist > sight_distance:
+		return false
+	var fwd := _facing
+	if fwd.length_squared() < 0.0001:
+		fwd = Vector2.RIGHT
+	var to_n := to_p / dist
+	var cos_limit := cos(deg_to_rad(sight_half_angle_deg))
+	return fwd.normalized().dot(to_n) >= cos_limit
 
 func _can_see_player() -> bool:
 	if player == null or not is_instance_valid(player):
@@ -244,7 +269,7 @@ func _update_combat_state() -> bool:
 	# Once aggro, we keep chasing until sight-memory expires (handled in _update_sight()).
 	state = State.CHASE
 
-	if dist <= melee_adjacent and _melee_cd <= 0.0:
+	if dist <= maxf(melee_adjacent, melee_range) and _melee_cd <= 0.0:
 		_do_melee()
 		return true
 
@@ -297,7 +322,7 @@ func _apply_movement(delta: float) -> void:
 
 
 func _get_chase_target() -> Vector2:
-	if player != null and is_instance_valid(player) and (_sees_player or _in_see_area):
+	if player != null and is_instance_valid(player) and (_sees_player or _in_cone):
 		return player.global_position
 	if _last_known_player_pos != Vector2.ZERO:
 		return _last_known_player_pos
@@ -325,24 +350,17 @@ func _update_patrol(delta: float) -> void:
 		_patrol_wait_left -= delta
 		if _patrol_wait_left <= 0.0:
 			_last_patrol_index = _patrol_index
-			_patrol_index = _pick_random_patrol_index_excluding(_last_patrol_index)
+			_patrol_index = (_patrol_index + 1) % _waypoints.size()
 			_nav.target_position = _waypoints[_patrol_index].global_position
 
 
-func _pick_random_patrol_index_excluding(exclude: int) -> int:
+func _pick_random_patrol_index_excluding(_exclude: int) -> int:
 	var n := _waypoints.size()
 	if n <= 0:
 		return 0
 	if n == 1:
 		return 0
-	if not random_patrol:
-		return (_patrol_index + 1) % n
-	var pick := randi() % n
-	var guard := 0
-	while pick == exclude and guard < 16:
-		pick = randi() % n
-		guard += 1
-	return pick
+	return (_patrol_index + 1) % n
 
 
 func _move_along_nav(speed: float, goal_global: Vector2) -> void:
@@ -390,7 +408,7 @@ func _update_stuck_recovery() -> void:
 	_stuck_frames = 0
 	if state == State.PATROL and not _waypoints.is_empty():
 		_last_patrol_index = _patrol_index
-		_patrol_index = _pick_random_patrol_index_excluding(_last_patrol_index)
+		_patrol_index = (_patrol_index + 1) % _waypoints.size()
 		_nav.target_position = _waypoints[_patrol_index].global_position
 	elif state == State.CHASE and player:
 		_nav.target_position = player.global_position + Vector2(randf_range(-6.0, 6.0), randf_range(-6.0, 6.0))
@@ -512,7 +530,10 @@ func _do_gas_combat() -> void:
 	gas.global_position = ppos + lead
 	if gas.has_method("configure"):
 		# Use a moderate radius in combat; patrol gas can still be larger.
-		gas.call("configure", gas_duration, minf(gas_patrol_radius, 64.0))
+		var r := gas_combat_radius
+		if r <= 0.0:
+			r = minf(gas_patrol_radius, 96.0)
+		gas.call("configure", gas_duration, minf(gas_patrol_radius, r))
 	get_tree().current_scene.add_child(gas)
 
 
