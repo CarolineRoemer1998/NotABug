@@ -83,12 +83,12 @@ position = Vector2(676.00006, -215)
 scale = Vector2(10.715, 0.365)
 
 [node name="Node2D5" parent="." unique_id=1232287713 instance=ExtResource("2_q778t")]
-position = Vector2(1285, 1093)
+position = Vector2(1285, 1201)
 scale = Vector2(21.045, 0.365)
 
 [node name="Node2D6" parent="." unique_id=1325476548 instance=ExtResource("2_q778t")]
-position = Vector2(1, 398.00006)
-scale = Vector2(0.395, 10.995)
+position = Vector2(-11, 465)
+scale = Vector2(0.395, 11.93)
 
 [node name="CollisionShape2D" parent="Node2D6/StaticBody2D" parent_id_path=PackedInt32Array(1325476548, 408825907) index="0" unique_id=309677546]
 position = Vector2(-8.21519, 0.6821251)
@@ -97,7 +97,7 @@ shape = SubResource("RectangleShape2D_doo2m")
 
 [node name="Node2D7" parent="." unique_id=1905757292 instance=ExtResource("2_q778t")]
 position = Vector2(2603, 381.00003)
-scale = Vector2(0.395, 10.995)
+scale = Vector2(0.395, 13.405)
 
 [node name="Node2D8" parent="." unique_id=1822901440 instance=ExtResource("2_q778t")]
 position = Vector2(1921, -320)
@@ -218,7 +218,7 @@ scale = Vector2(1.025, 1.595)
 position = Vector2(0, 14.733543)
 
 [node name="Node2D27" parent="." unique_id=955997129 instance=ExtResource("2_q778t")]
-position = Vector2(2076.0002, 672)
+position = Vector2(2076.0002, 780)
 scale = Vector2(0.395, 1.45)
 
 [node name="CollisionShape2D" parent="Node2D27/StaticBody2D" parent_id_path=PackedInt32Array(955997129, 408825907) index="0" unique_id=309677546]
@@ -227,25 +227,25 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_neu01")
 
 [node name="Node2D28" parent="." unique_id=464672631 instance=ExtResource("2_q778t")]
-position = Vector2(1279, 822)
+position = Vector2(1279, 930)
 scale = Vector2(0.395, 4.145)
 
 [node name="Node2D29" parent="." unique_id=293667550 instance=ExtResource("2_q778t")]
-position = Vector2(1912.44, 557.525)
-scale = Vector2(5.38, 0.825)
+position = Vector2(1912.44, 665.525)
+scale = Vector2(4.59, 0.825)
 
 [node name="CollisionShape2D" parent="Node2D29/StaticBody2D" parent_id_path=PackedInt32Array(293667550, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 28.783203)
 
 [node name="Node2D30" parent="." unique_id=589883156 instance=ExtResource("2_q778t")]
-position = Vector2(2513.465, 557.525)
+position = Vector2(2513.465, 665.525)
 scale = Vector2(1.99, 0.825)
 
 [node name="CollisionShape2D" parent="Node2D30/StaticBody2D" parent_id_path=PackedInt32Array(589883156, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 28.783203)
 
 [node name="Node2D31" parent="." unique_id=1931192366 instance=ExtResource("2_q778t")]
-position = Vector2(1334.61, 557.525)
+position = Vector2(1334.61, 665.5251)
 scale = Vector2(1.295, 0.825)
 
 [node name="CollisionShape2D" parent="Node2D31/StaticBody2D" parent_id_path=PackedInt32Array(1931192366, 408825907) index="0" unique_id=309677546]
@@ -260,54 +260,54 @@ position = Vector2(0, 15.421753)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Node2D33" parent="." unique_id=432274568 instance=ExtResource("2_q778t")]
-position = Vector2(2076, 1002.685)
+position = Vector2(2076, 1110.685)
 scale = Vector2(0.395, 2.07)
 
 [node name="Node2D34" parent="." unique_id=781269991 instance=ExtResource("2_q778t")]
-position = Vector2(1638, 839)
+position = Vector2(1638, 947.00006)
 scale = Vector2(2.64, 0.915)
 
 [node name="Node2D35" parent="." unique_id=1440504127 instance=ExtResource("2_q778t")]
-position = Vector2(2349, 834)
+position = Vector2(2349, 942)
 scale = Vector2(1.07, 1.675)
 
 [node name="CollisionShape2D" parent="Node2D35/StaticBody2D" parent_id_path=PackedInt32Array(1440504127, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 8.656708)
 
 [node name="Node2D36" parent="." unique_id=93196543 instance=ExtResource("2_q778t")]
-position = Vector2(2480, 832)
+position = Vector2(2480, 940)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D37" parent="." unique_id=105202099 instance=ExtResource("2_q778t")]
-position = Vector2(1521, 737)
+position = Vector2(1520.9999, 845)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D38" parent="." unique_id=1989830333 instance=ExtResource("2_q778t")]
-position = Vector2(1602.0001, 737)
+position = Vector2(1602.0001, 845)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D39" parent="." unique_id=25132130 instance=ExtResource("2_q778t")]
-position = Vector2(1684.0001, 732)
+position = Vector2(1684.0001, 840)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D40" parent="." unique_id=896881816 instance=ExtResource("2_q778t")]
-position = Vector2(1765.0002, 732)
+position = Vector2(1765.0004, 840)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D41" parent="." unique_id=662480376 instance=ExtResource("2_q778t")]
-position = Vector2(1521, 950)
+position = Vector2(1520.9999, 1058)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D42" parent="." unique_id=480237538 instance=ExtResource("2_q778t")]
-position = Vector2(1602.0001, 950)
+position = Vector2(1602.0001, 1058)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D43" parent="." unique_id=1714935450 instance=ExtResource("2_q778t")]
-position = Vector2(1682.0001, 942)
+position = Vector2(1682.0001, 1050)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D44" parent="." unique_id=113289251 instance=ExtResource("2_q778t")]
-position = Vector2(1763.0002, 942)
+position = Vector2(1763.0004, 1050)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D45" parent="." unique_id=1524510883 instance=ExtResource("2_q778t")]
@@ -319,27 +319,25 @@ position = Vector2(1087.9999, -105)
 scale = Vector2(0.455, 0.475)
 
 [node name="Node2D47" parent="." unique_id=2128965227 instance=ExtResource("2_q778t")]
-position = Vector2(1085, 983)
+position = Vector2(1085, 1091)
 scale = Vector2(2.565, 1.155)
 
 [node name="CollisionShape2D" parent="Node2D47/StaticBody2D" parent_id_path=PackedInt32Array(2128965227, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, 21.52533)
 
 [node name="Node2D18" parent="." unique_id=1265753757 instance=ExtResource("3_y7qsj")]
-visible = false
 position = Vector2(49, 705)
 scale = Vector2(3.995, 3.995)
 
-[node name="Testimage" parent="Node2D18" index="1" unique_id=1250085932]
-position = Vector2(89.23654, -112.39049)
-scale = Vector2(3.156289, 3.7781606)
+[node name="Testimage" parent="Node2D18" index="0" unique_id=1250085932]
+position = Vector2(89.36171, -110.26283)
+scale = Vector2(3.1602006, 3.8446498)
 
 [node name="Node2D48" parent="." unique_id=82575817 instance=ExtResource("3_y7qsj")]
-visible = false
-position = Vector2(1318, 1077)
+position = Vector2(1318, 1185)
 scale = Vector2(3.995, 3.995)
 
-[node name="Testimage" parent="Node2D48" index="1" unique_id=1250085932]
+[node name="Testimage" parent="Node2D48" index="0" unique_id=1250085932]
 position = Vector2(156.69586, -60.20024)
 scale = Vector2(5.264393, 2.1472154)
 

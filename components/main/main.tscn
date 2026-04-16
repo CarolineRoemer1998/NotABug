@@ -65,6 +65,7 @@ position = Vector2(-446.585, -580.945)
 scale = Vector2(5.72, 5.72)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Game" unique_id=93905533]
+visible = false
 position = Vector2(358, 218)
 collision_layer = 16
 collision_mask = 16
@@ -74,6 +75,7 @@ position = Vector2(4.5, -2)
 shape = SubResource("RectangleShape2D_lnf1j")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Game" unique_id=913010985]
+visible = false
 position = Vector2(57, 303)
 collision_layer = 16
 collision_mask = 16
@@ -83,10 +85,12 @@ position = Vector2(252, -54)
 shape = SubResource("RectangleShape2D_gjvd5")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1178839345]
+visible = false
 position = Vector2(42, 29)
 navigation_polygon = SubResource("NavigationPolygon_lnf1j")
 
 [node name="Wall" type="StaticBody2D" parent="Game" unique_id=67498972]
+visible = false
 position = Vector2(57, 303)
 collision_layer = 16
 collision_mask = 16
@@ -110,8 +114,9 @@ position = Vector2(98.51, 252.865)
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
-position = Vector2(18.375494, 0.097416155)
-zoom = Vector2(0.725, 0.725)
+zoom = Vector2(0.805, 0.805)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 

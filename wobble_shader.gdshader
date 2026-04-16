@@ -12,8 +12,3 @@ void fragment() {
 	COLOR = vec4(color.r, color.g, color.b, 1) + vec4(noise.x, noise.y, 1, 1);
 	COLOR *= texture(screen_content, SCREEN_UV + noise * (wave_strength / 100.0)); 
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
