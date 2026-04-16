@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
-[ext_resource type="Script" uid="uid://1hxp663br1o0" path="res://components/main/main.gd" id="1_4k17i"]
+[ext_resource type="Script" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
-[ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="2_wfiak"]
+[ext_resource type="Script" path="res://components/items/ItemData.gd" id="2_wfiak"]
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
@@ -13,41 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnf1j"]
-size = Vector2(83, 22)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjvd5"]
-size = Vector2(20, 71)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lnf1j"]
-vertices = PackedVector2Array(248.03906, 88.109375, 248.89063, 12.890625, 322.6172, 12.109375, 320.1172, 80.38281, 299.32813, 106.96094, 263.89063, 105.09375, 171.13281, 79.1875, 170.14063, 11.1484375, 218, 11.8515625, 218, 70.140625, 219.25781, 115.59375, 28.0625, 124.5625, 28.921875, 6.3125, 136.64063, 9.6796875, 93.328125, 135.60938, 131.65625, 148.3125, 92.64844, 153.15625, 362.5625, 11.9296875, 499.8828, 11.0625, 498.9297, 96.53125, 391, 93.74219, 358.71094, 97.703125, 391, 124.90625, 366, 169.5625, 497.9297, 125.89844, 497.6875, 162.5, 462.03125, 161.77344, 404.1172, 177, 403.1172, 258.78125, 283.1328, 256.21094, 366, 199.64063, 497.10938, 259.85156, 428.39844, 258.8672, 430.22656, 177, 464.84375, 192.74219, 254.32813, 174.40625, 251.35156, 258.75, 28.828125, 253.22656, 27.15625, 159.10938, 150.96094, 149.64844, 497.8828, 193.71094, 283.85938, 202.64063, 158.09375, 80.27344, 258.27344, 117.28125, 308.82813, 119.25781)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(6, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(14, 13, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 17, 20, 22, 23), PackedInt32Array(24, 25, 26, 22), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 36, 37, 38, 16), PackedInt32Array(35, 16, 15, 39), PackedInt32Array(34, 40, 31), PackedInt32Array(26, 34, 33, 22), PackedInt32Array(22, 33, 27, 23), PackedInt32Array(29, 41, 30), PackedInt32Array(27, 30, 23), PackedInt32Array(35, 39, 42, 6, 10), PackedInt32Array(35, 10, 43, 23), PackedInt32Array(23, 43, 5, 44), PackedInt32Array(44, 21, 23), PackedInt32Array(44, 5, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(17, 150, 19, 263, 261, 269, 264, 184, 356, 180, 356, 190, 274, 193, 273, 266, 413, 269, 414, 187, 420, 187, 418.17975, 268.72595, 507, 270, 508, 184, 474, 183, 473, 172, 507.6317, 172.71349, 508, 116, 401, 115, 401, 104, 508.82007, 106.80005, 510, 1, 353, 2, 349, 91, 312, 107, 330, 84, 333, 2, 239, 3, 238, 92, 252, 107, 229, 106, 228, 70, 228, 2, 160, 1, 161, 70, 149, 71, 142, 139, 147, 0, 19, -4, 18, 133, 83, 144)])
+vertices = PackedVector2Array(312.6875, 88.296875, 312.85156, 15.7734375, 340.04688, 17.3125, 339.09375, 125.140625, 292.85156, 125.84375, 272.2578, 86.22656, 443.9922, 39.820313, 443.1328, 16.4375, 490.1875, 17.148438, 488.8828, 94.67969, 395.39844, 303.7422, 395.92188, 325.92188, 270.35938, 325.4297, 270.03906, 210.13281, 286.6797, 209.79688, 185.90625, 214.53906, 186.60156, 118.78125, 226.46875, 120.02344, 226.46875, 138.07813, 171.75, 97.78125, 171.75, 193.46875, 142.54688, 192.78125, 43.226563, 191.42188, 41.242188, 7.6796875, 176.11719, 9.1875, 176.11719, 9.203125, 103.53125, 190.54688, 256.17188, 187.35156, 256.6875, 325.3672, 41.257813, 323.35938, 487.22656, 207.46094, 489.8125, 324.4297, 410.03906, 325.52344, 409.17188, 303.7422, 352.4297, 16.921875, 392.15625, 15.796875, 392.8672, 41.90625, 353.71094, 123.671875, 437.9922, 123.85156, 406.85156, 41.34375, 410.07813, 278.34375, 409.90625, 207.77344, 396.10156, 279.59375, 395.39063, 207.78125, 326.35156, 207.61719, 287.29688, 188.14063, 325.53125, 190.10938, 42.859375, 213.07813, 102.28125, 213.60938, 226.5625, 10.3125, 225.14063, 97.953125, 142.54688, 215.21875, 407.20313, 15.9921875, 427.7578, 15.859375, 428.10938, 40.289063, 487.3672, 189.92969, 436.8828, 143.27344, 291.70313, 144.00781, 297.10156, 12.09375, 297.10156, 36.492188, 270.52344, 36.851563, 244.02344, 11.359375, 241.39063, 108.88281, 242, 139.07813)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(0, 3, 4), PackedInt32Array(5, 0, 4), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(10, 12, 13), PackedInt32Array(10, 13, 14), PackedInt32Array(15, 16, 17), PackedInt32Array(15, 17, 18), PackedInt32Array(19, 20, 21), PackedInt32Array(22, 23, 24), PackedInt32Array(22, 24, 25), PackedInt32Array(26, 22, 25), PackedInt32Array(27, 28, 29), PackedInt32Array(30, 31, 32), PackedInt32Array(30, 32, 33), PackedInt32Array(34, 35, 36), PackedInt32Array(37, 34, 36), PackedInt32Array(38, 37, 36), PackedInt32Array(38, 36, 39), PackedInt32Array(40, 41, 30), PackedInt32Array(40, 30, 33), PackedInt32Array(42, 40, 33), PackedInt32Array(42, 33, 10), PackedInt32Array(42, 10, 14), PackedInt32Array(43, 42, 14), PackedInt32Array(44, 43, 14), PackedInt32Array(44, 14, 45), PackedInt32Array(46, 44, 45), PackedInt32Array(29, 47, 48), PackedInt32Array(25, 49, 50), PackedInt32Array(25, 50, 19), PackedInt32Array(26, 25, 19), PackedInt32Array(26, 19, 21), PackedInt32Array(48, 26, 21), PackedInt32Array(48, 21, 51), PackedInt32Array(52, 53, 54), PackedInt32Array(39, 52, 54), PackedInt32Array(38, 39, 54), PackedInt32Array(38, 54, 6), PackedInt32Array(38, 6, 9), PackedInt32Array(38, 9, 55), PackedInt32Array(56, 38, 55), PackedInt32Array(56, 55, 46), PackedInt32Array(57, 56, 46), PackedInt32Array(57, 46, 45), PackedInt32Array(58, 59, 60), PackedInt32Array(61, 58, 60), PackedInt32Array(62, 61, 60), PackedInt32Array(62, 60, 5), PackedInt32Array(62, 5, 4), PackedInt32Array(63, 62, 4), PackedInt32Array(63, 4, 57), PackedInt32Array(63, 57, 45), PackedInt32Array(63, 45, 27), PackedInt32Array(18, 63, 27), PackedInt32Array(15, 18, 27), PackedInt32Array(15, 27, 29), PackedInt32Array(51, 15, 29), PackedInt32Array(48, 51, 29)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(37.937065, 208.04196, 36.188812, 328.3217, 261.7133, 330.4196, 261.1888, 192.48251, 282.16785, 193.00699, 281.81818, 204.89511, 265.03497, 205.24475, 265.3846, 330.4196, 401.04895, 330.94406, 400.52448, 308.74127, 404.37064, 308.74127, 405.24475, 330.59442, 494.93008, 329.37064, 492.13287, 202.44756, 404.8951, 202.79721, 405.06992, 273.77625, 401.04895, 274.1259, 400.34964, 202.79721, 331.11887, 202.62238, 330.76923, 195.10489, 492.30768, 194.93007, 493.8811, 94.75525, 495.27972, 12.237762, 437.93707, 11.363637, 438.8112, 34.965034, 433.04196, 35.139862, 432.6923, 10.839162, 402.27274, 11.013987, 401.92307, 36.538464, 397.72726, 36.713287, 397.02798, 10.664336, 347.37762, 12.062938, 348.7762, 128.67133, 432.6923, 128.84616, 432.16782, 138.28671, 297.02798, 138.98602, 297.55246, 130.76924, 344.05594, 130.06993, 345.1049, 12.587414, 307.86713, 10.4895115, 307.6923, 83.04196, 277.0979, 81.46854, 275.6993, 41.78322, 302.0979, 41.433567, 302.0979, 7.1678333, 239.16086, 6.293707, 236.39044, 108.741745, 236.88812, 133.74126, 231.46854, 133.39162, 231.46854, 115.55945, 226.9231, 115.034966, 181.64337, 113.63636, 180.94406, 209.61539, 147.55246, 210.13986, 147.55246, 197.9021, 176.74826, 198.6014, 176.74826, 102.79721, 230.06995, 102.97203, 231.64336, 5.4195843, 176.22379, 4.1958084, 36.188812, 2.622383, 38.286716, 196.5035, 98.251755, 195.62936, 97.55245, 208.56644)])
 sample_partition_type = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymw2v"]
-size = Vector2(237, 13)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7uxv"]
-size = Vector2(8, 136)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvprt"]
-size = Vector2(14, 93)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54wvq"]
-size = Vector2(8, 68.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eaec"]
-size = Vector2(89, 13)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8136a"]
-size = Vector2(20, 78)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxrab"]
-size = Vector2(10, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj6qt"]
-size = Vector2(58, 21)
+agent_radius = 5.0
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_4k17i")
@@ -68,118 +39,66 @@ texture = ExtResource("6_gjvd5")
 position = Vector2(-446.585, -580.945)
 scale = Vector2(5.72, 5.72)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Game" unique_id=93905533]
-position = Vector2(358, 218)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D2" unique_id=1061876925]
-position = Vector2(4.5, -2)
-shape = SubResource("RectangleShape2D_lnf1j")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Game" unique_id=913010985]
-position = Vector2(57, 303)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D" unique_id=818616586]
-position = Vector2(252, -54)
-shape = SubResource("RectangleShape2D_gjvd5")
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1178839345]
-position = Vector2(42, 29)
+position = Vector2(34.018356, 81.63374)
 navigation_polygon = SubResource("NavigationPolygon_lnf1j")
 
-[node name="Wall" type="StaticBody2D" parent="Game" unique_id=67498972]
-position = Vector2(57, 303)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Wall" unique_id=200123891]
-position = Vector2(138, -6)
-shape = SubResource("RectangleShape2D_ymw2v")
-
 [node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
-position = Vector2(326.8, 111.33)
+position = Vector2(291.71066, 132.50787)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 100.0
+chase_speed = 130.0
+chase_speed_close = 90.0
+chase_speed_aggro = 100.0
+patrol_wait_min = 1.0
+patrol_wait_max = 2.0
+sight_distance = 380.0
+sight_memory_time = 5.0
+chase_lose_distance = 560.0
+close_attack_radius = 160.0
+far_attack_radius = 320.0
+melee_damage = 10
+melee_range = 140.0
+gas_patrol_radius = 300.0
+gas_combat_radius = 160.0
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
 [node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
-position = Vector2(98.51, 252.865)
+position = Vector2(123.52885, 330.5848)
+
+[node name="UI" parent="Game/Player" index="5" unique_id=1900340849]
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
-position = Vector2(18.375494, 0.097416155)
-zoom = Vector2(0.725, 0.725)
+zoom = Vector2(0.805, 0.805)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
 [node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
-position = Vector2(121, 64)
+position = Vector2(139.96242, 168.8715)
 
 [node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
-position = Vector2(492, 68)
+position = Vector2(493.2841, 131.45892)
 
 [node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
-position = Vector2(506, 245)
+position = Vector2(289.43793, 149.29109)
 
 [node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
-position = Vector2(389, 269)
+position = Vector2(365.66174, 347.01837)
 
 [node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
-position = Vector2(327, 81)
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Game" unique_id=1008137485]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D3" unique_id=619576808]
-position = Vector2(189, 106)
-shape = SubResource("RectangleShape2D_y7uxv")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Game" unique_id=280783416]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D4" unique_id=147455268]
-position = Vector2(271, 86.5)
-shape = SubResource("RectangleShape2D_mvprt")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Game" unique_id=425212502]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D5" unique_id=1409337387]
-position = Vector2(383, 74.75)
-shape = SubResource("RectangleShape2D_54wvq")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="Game" unique_id=461946721]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D6" unique_id=658409374]
-position = Vector2(489, 139)
-shape = SubResource("RectangleShape2D_4eaec")
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="Game" unique_id=503443688]
-position = Vector2(3, 6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D7" unique_id=2131764259]
-position = Vector2(455, 244)
-shape = SubResource("RectangleShape2D_8136a")
-
-[node name="StaticBody2D8" type="StaticBody2D" parent="Game" unique_id=1873674562]
-position = Vector2(22, 7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D8" unique_id=1790831893]
-position = Vector2(501, 200)
-shape = SubResource("RectangleShape2D_fxrab")
-
-[node name="StaticBody2D9" type="StaticBody2D" parent="Game" unique_id=395831918]
-position = Vector2(55, 7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/StaticBody2D9" unique_id=1462519352]
-position = Vector2(40, 169)
-shape = SubResource("RectangleShape2D_jj6qt")
+position = Vector2(483.14426, 345.61975)
 
 [node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
+position = Vector2(-26, 356)
+metadata/_edit_lock_ = true
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -214,7 +133,6 @@ anchors_preset = 0
 anchors_preset = 0
 
 [node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +141,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DevUI" unique_id=1266564932]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -236,7 +153,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Dev Tools (press  \" + \"  to hide/show)
