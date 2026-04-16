@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://chs8g8dsb8ggb"]
+
+[ext_resource type="Shader" uid="uid://cc7k35411pte" path="res://shaders/glitch_shader.gdshader" id="1_sqx27"]
+[ext_resource type="Texture2D" uid="uid://cipyrvkwa3dbf" path="res://icon.svg" id="2_4jvev"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fhv4"]
+shader = ExtResource("1_sqx27")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syvj2"]
+shader = ExtResource("1_sqx27")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 10.325
+shader_parameter/shake_color_rate = 0.01
+
+[node name="Glitch" type="Node2D" unique_id=1063543316]
+material = SubResource("ShaderMaterial_4fhv4")
+
+[node name="Testicon" type="Sprite2D" parent="." unique_id=1418328551]
+visible = false
+position = Vector2(16, 4)
+texture = ExtResource("2_4jvev")
+
+[node name="Glitchoverlay" type="Sprite2D" parent="." unique_id=1955965157]
+material = SubResource("ShaderMaterial_syvj2")
+texture = ExtResource("2_4jvev")

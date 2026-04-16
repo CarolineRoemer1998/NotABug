@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="1_6rgvi"]
 [ext_resource type="PackedScene" uid="uid://djtbniwgojuhe" path="res://scenes/Redblock.tscn" id="2_q778t"]
 [ext_resource type="PackedScene" uid="uid://dpaydyyn1pjfq" path="res://scenes/wobble_overlay.tscn" id="3_y7qsj"]
+[ext_resource type="PackedScene" uid="uid://chs8g8dsb8ggb" path="res://scenes/glitch_overlay.tscn" id="4_ndw6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q778t"]
 size = Vector2(124, 71.709785)
@@ -407,6 +408,14 @@ scale = Vector2(0.465, 1.745)
 [node name="CollisionShape2D" parent="Node2D52/StaticBody2D" parent_id_path=PackedInt32Array(2011120246, 408825907) index="0" unique_id=309677546]
 position = Vector2(0, -0.75567627)
 shape = SubResource("RectangleShape2D_qmwvp")
+
+[node name="Node2D30" type="Node2D" parent="." unique_id=1033174486]
+
+[node name="Glitch" parent="." unique_id=1063543316 instance=ExtResource("4_ndw6h")]
+position = Vector2(1094, 1169)
+
+[node name="Glitch2" parent="." unique_id=1968838826 instance=ExtResource("4_ndw6h")]
+position = Vector2(2143, 881)
 
 [editable path="Node2D"]
 [editable path="Node2D2"]

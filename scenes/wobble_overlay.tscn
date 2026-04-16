@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpaydyyn1pjfq"]
 
-[ext_resource type="Shader" uid="uid://cpo2c6acvrg2t" path="res://wobble_shader.gdshader" id="1_2s711"]
+[ext_resource type="Shader" uid="uid://cpo2c6acvrg2t" path="res://shaders/wobble_shader.gdshader" id="1_2s711"]
 [ext_resource type="Texture2D" uid="uid://j3ba5k4xfldi" path="res://art/blackbox.png" id="3_rd615"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ljws8"]
