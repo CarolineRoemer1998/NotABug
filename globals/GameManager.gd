@@ -6,7 +6,7 @@ enum STATE { Tutorial, Playing, Won, Lost }
 var current_health : float = 100.0
 var current_fear : float = 100.0
 
-var current_game_state : STATE = STATE.Playing # TODO: zurück zu Tutorial ändern für Export
+var current_game_state : STATE = STATE.Tutorial # TODO: zurück zu Tutorial ändern für Export
 
 var collected_items : Array[Item] = []
 

@@ -113,6 +113,10 @@ position = Vector2(98.51, 252.865)
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
 position = Vector2(18.375494, 0.097416155)
 zoom = Vector2(0.725, 0.725)
+limit_left = -18
+limit_top = -535
+limit_right = 2621
+limit_bottom = 1103
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
