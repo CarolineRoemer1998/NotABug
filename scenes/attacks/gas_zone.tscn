@@ -1,19 +1,19 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cman5vtgbx48y"]
 
-[ext_resource type="Script" path="res://scenes/attacks/gas_zone.gd" id="1_xv5s4"]
+[ext_resource type="Script" uid="uid://frsspisvrvnv" path="res://scenes/attacks/gas_zone.gd" id="1_xv5s4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5p8k"]
 radius = 24.0
 
-[node name="GasZone" type="Area2D"]
+[node name="GasZone" type="Area2D" unique_id=550689667]
 collision_layer = 8
-collision_mask = 1
 script = ExtResource("1_xv5s4")
+tick_damage = 30
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2043427234]
 shape = SubResource("CircleShape2D_y5p8k")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=240347445]
 wait_time = 0.5
 autostart = true
 
