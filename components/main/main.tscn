@@ -1,23 +1,29 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
-[ext_resource type="Script" path="res://components/main/main.gd" id="1_4k17i"]
+[ext_resource type="Script" uid="uid://1hxp663br1o0" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
-[ext_resource type="Script" path="res://components/items/ItemData.gd" id="2_wfiak"]
+[ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="2_wfiak"]
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
-[ext_resource type="PackedScene" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
-[ext_resource type="PackedScene" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
-[ext_resource type="PackedScene" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
+[ext_resource type="SpriteFrames" uid="uid://drrfuhvwcu2xj" path="res://art/Monster_nahangriff.tres" id="8_jj6qt"]
+[ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
+[ext_resource type="SpriteFrames" uid="uid://dwpkke80i1t6a" path="res://art/Monster_fernangriff.tres" id="9_hwayo"]
+[ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
+[ext_resource type="SpriteFrames" uid="uid://dh0f21rlw6l2a" path="res://art/Monster_walkcycles.tres" id="10_lh2ai"]
+[ext_resource type="SpriteFrames" uid="uid://vgrw7lu44vs8" path="res://art/Person_Walkcycle.tres" id="12_egy1f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
 vertices = PackedVector2Array(546.3672, 395.7578, 547.60156, 458, 481, 458, 481, 408, 378.46875, 393.7578, 430, 408, 413.82813, 122, 545.6406, 122, 545.35156, 138, 448, 138, 413.1797, 197, 448, 181, 502, 197, 545.1406, 181, 545.85156, 279.75, 502, 242, 381.53125, 277.7578, 318, 242, 147, 98.71875, 75, 99.71094, 75, 88, 170.96875, 88, 169.75781, 189, 147, 202, 169, 457.5078, 74.74219, 457.90625, 73.25781, 342, 127, 342, 169, 395.79688, 192.00781, 189, 191.17188, 285, 159, 285, 127, 286, 74.15625, 286, 74.84375, 202, 159, 340, 234.65625, 340, 268.15625, 396.78906, 269.17188, 278, 236.65625, 224, 333, 278, 279.71094, 224, 357.77344, 89, 368.85938, 89, 368.1328, 197, 356.77344, 174, 318, 197, 298.53906, 174, 430, 457.8672, 312.1172, 457.1172, 312.8828, 332, 333, 332, 281.70313, 88.25781, 300.45313, 90, 317, 88.72656, 317, 90)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(15, 14, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(18, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(23, 22, 29, 30, 31), PackedInt32Array(32, 33, 34, 23, 31), PackedInt32Array(32, 31, 35, 27), PackedInt32Array(28, 27, 35, 36, 37), PackedInt32Array(38, 37, 36, 39), PackedInt32Array(40, 38, 39, 41, 17, 16), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(45, 44, 46, 47), PackedInt32Array(5, 48, 49, 4), PackedInt32Array(4, 49, 50, 51), PackedInt32Array(16, 4, 51, 40), PackedInt32Array(46, 17, 41, 47), PackedInt32Array(47, 41, 52, 53), PackedInt32Array(53, 52, 54, 55)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(55, 68, 258, 68, 258.13586, 84.8455, 191, 85, 190, 169, 257, 169, 257, 191, 212, 191, 211, 305, 179, 305, 179, 320, 215, 320, 217, 204, 260, 204, 262, 68, 337, 69, 337, 110, 320, 110, 319, 154, 337, 154, 338, 69, 389, 69, 388, 217, 338, 217, 338, 222, 482, 222, 482, 217, 393, 217, 394, 102, 566, 102, 565, 158, 468, 158, 468, 161, 565, 161, 566, 300, 401, 298, 399, 374, 566, 376, 568, 478, 461, 478, 461, 428, 450, 428, 450, 478, 292, 477, 293, 312, 313, 312, 313, 298, 289, 298, 288, 417, 189, 416, 189, 444, 288, 444, 288, 477, 55, 478, 53, 322, 107, 322, 107, 306, 54, 306, 55, 182, 127, 182, 127, 119, 55, 120)])
 agent_radius = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jj6qt"]
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_4k17i")
@@ -45,10 +51,10 @@ navigation_layers = 17
 [node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(290, 133)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
-patrol_speed = 38.0
-chase_speed = 62.0
+patrol_speed = 35.0
+chase_speed = 35.0
 chase_speed_close = 50.0
-chase_speed_aggro = 66.0
+chase_speed_aggro = 35.0
 melee_boost_speed = 45.0
 patrol_wait_min = 1.35
 patrol_wait_max = 2.85
@@ -68,6 +74,28 @@ melee_range = 30.0
 gas_duration = 50.0
 gas_patrol_radius = 70.0
 gas_combat_radius = 38.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=878995692]
+position = Vector2(3.9999924, -13.999989)
+scale = Vector2(0.16183573, 0.16183574)
+sprite_frames = ExtResource("8_jj6qt")
+animation = &"schuhe"
+frame_progress = 0.56551063
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=971788600]
+visible = false
+position = Vector2(3.9999924, -13.999989)
+scale = Vector2(0.16183573, 0.16183574)
+sprite_frames = ExtResource("9_hwayo")
+animation = &"Alles"
+frame_progress = 0.36092696
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=1965788097]
+visible = false
+position = Vector2(3.9999924, -13.999989)
+scale = Vector2(0.16183573, 0.16183574)
+sprite_frames = ExtResource("9_hwayo")
+animation = &"Handschuhe"
 
 [node name="Enemy3" parent="Game" unique_id=1413421460 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(125, 395)
@@ -96,6 +124,13 @@ gas_duration = 50.0
 gas_patrol_radius = 70.0
 gas_combat_radius = 38.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy3" unique_id=1532245076]
+position = Vector2(3.9999924, -13.999989)
+scale = Vector2(0.16183573, 0.16183574)
+sprite_frames = ExtResource("10_lh2ai")
+animation = &"schuhe"
+frame_progress = 0.36001068
+
 [node name="Enemy2" parent="Game" unique_id=1447438685 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(505, 425)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
@@ -123,12 +158,28 @@ gas_duration = 50.0
 gas_patrol_radius = 70.0
 gas_combat_radius = 38.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy2" unique_id=734239517]
+position = Vector2(3.9999924, -13.999989)
+scale = Vector2(0.16183573, 0.16183574)
+sprite_frames = ExtResource("9_hwayo")
+animation = &"schuhe"
+frame_progress = 0.021531722
+
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
 [node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
 position = Vector2(79, 117)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/Player/Visuals" parent_id_path=PackedInt32Array(284675764, 1917120212) index="0" unique_id=724058271]
+scale = Vector2(0.07181817, 0.07181817)
+sprite_frames = ExtResource("12_egy1f")
+animation = &"idle_scared"
+
+[node name="AnimatedSprite2D" parent="Game/Player/Visuals" parent_id_path=PackedInt32Array(284675764, 1917120212) index="1" unique_id=285574132]
+sprite_frames = SubResource("SpriteFrames_jj6qt")
+animation = &"default"
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
 zoom = Vector2(0.88, 0.88)
