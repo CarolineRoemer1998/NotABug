@@ -13,12 +13,11 @@
 [ext_resource type="PackedScene" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_lnf1j"]
-vertices = PackedVector2Array(312.6875, 88.296875, 312.85156, 15.7734375, 340.04688, 17.3125, 339.09375, 125.140625, 292.85156, 125.84375, 272.2578, 86.22656, 443.9922, 39.820313, 443.1328, 16.4375, 490.1875, 17.148438, 488.8828, 94.67969, 395.39844, 303.7422, 395.92188, 325.92188, 270.35938, 325.4297, 270.03906, 210.13281, 286.6797, 209.79688, 185.90625, 214.53906, 186.60156, 118.78125, 226.46875, 120.02344, 226.46875, 138.07813, 171.75, 97.78125, 171.75, 193.46875, 142.54688, 192.78125, 43.226563, 191.42188, 41.242188, 7.6796875, 176.11719, 9.1875, 176.11719, 9.203125, 103.53125, 190.54688, 256.17188, 187.35156, 256.6875, 325.3672, 41.257813, 323.35938, 487.22656, 207.46094, 489.8125, 324.4297, 410.03906, 325.52344, 409.17188, 303.7422, 352.4297, 16.921875, 392.15625, 15.796875, 392.8672, 41.90625, 353.71094, 123.671875, 437.9922, 123.85156, 406.85156, 41.34375, 410.07813, 278.34375, 409.90625, 207.77344, 396.10156, 279.59375, 395.39063, 207.78125, 326.35156, 207.61719, 287.29688, 188.14063, 325.53125, 190.10938, 42.859375, 213.07813, 102.28125, 213.60938, 226.5625, 10.3125, 225.14063, 97.953125, 142.54688, 215.21875, 407.20313, 15.9921875, 427.7578, 15.859375, 428.10938, 40.289063, 487.3672, 189.92969, 436.8828, 143.27344, 291.70313, 144.00781, 297.10156, 12.09375, 297.10156, 36.492188, 270.52344, 36.851563, 244.02344, 11.359375, 241.39063, 108.88281, 242, 139.07813)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3), PackedInt32Array(0, 3, 4), PackedInt32Array(5, 0, 4), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(10, 12, 13), PackedInt32Array(10, 13, 14), PackedInt32Array(15, 16, 17), PackedInt32Array(15, 17, 18), PackedInt32Array(19, 20, 21), PackedInt32Array(22, 23, 24), PackedInt32Array(22, 24, 25), PackedInt32Array(26, 22, 25), PackedInt32Array(27, 28, 29), PackedInt32Array(30, 31, 32), PackedInt32Array(30, 32, 33), PackedInt32Array(34, 35, 36), PackedInt32Array(37, 34, 36), PackedInt32Array(38, 37, 36), PackedInt32Array(38, 36, 39), PackedInt32Array(40, 41, 30), PackedInt32Array(40, 30, 33), PackedInt32Array(42, 40, 33), PackedInt32Array(42, 33, 10), PackedInt32Array(42, 10, 14), PackedInt32Array(43, 42, 14), PackedInt32Array(44, 43, 14), PackedInt32Array(44, 14, 45), PackedInt32Array(46, 44, 45), PackedInt32Array(29, 47, 48), PackedInt32Array(25, 49, 50), PackedInt32Array(25, 50, 19), PackedInt32Array(26, 25, 19), PackedInt32Array(26, 19, 21), PackedInt32Array(48, 26, 21), PackedInt32Array(48, 21, 51), PackedInt32Array(52, 53, 54), PackedInt32Array(39, 52, 54), PackedInt32Array(38, 39, 54), PackedInt32Array(38, 54, 6), PackedInt32Array(38, 6, 9), PackedInt32Array(38, 9, 55), PackedInt32Array(56, 38, 55), PackedInt32Array(56, 55, 46), PackedInt32Array(57, 56, 46), PackedInt32Array(57, 46, 45), PackedInt32Array(58, 59, 60), PackedInt32Array(61, 58, 60), PackedInt32Array(62, 61, 60), PackedInt32Array(62, 60, 5), PackedInt32Array(62, 5, 4), PackedInt32Array(63, 62, 4), PackedInt32Array(63, 4, 57), PackedInt32Array(63, 57, 45), PackedInt32Array(63, 45, 27), PackedInt32Array(18, 63, 27), PackedInt32Array(15, 18, 27), PackedInt32Array(15, 27, 29), PackedInt32Array(51, 15, 29), PackedInt32Array(48, 51, 29)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(37.937065, 208.04196, 36.188812, 328.3217, 261.7133, 330.4196, 261.1888, 192.48251, 282.16785, 193.00699, 281.81818, 204.89511, 265.03497, 205.24475, 265.3846, 330.4196, 401.04895, 330.94406, 400.52448, 308.74127, 404.37064, 308.74127, 405.24475, 330.59442, 494.93008, 329.37064, 492.13287, 202.44756, 404.8951, 202.79721, 405.06992, 273.77625, 401.04895, 274.1259, 400.34964, 202.79721, 331.11887, 202.62238, 330.76923, 195.10489, 492.30768, 194.93007, 493.8811, 94.75525, 495.27972, 12.237762, 437.93707, 11.363637, 438.8112, 34.965034, 433.04196, 35.139862, 432.6923, 10.839162, 402.27274, 11.013987, 401.92307, 36.538464, 397.72726, 36.713287, 397.02798, 10.664336, 347.37762, 12.062938, 348.7762, 128.67133, 432.6923, 128.84616, 432.16782, 138.28671, 297.02798, 138.98602, 297.55246, 130.76924, 344.05594, 130.06993, 345.1049, 12.587414, 307.86713, 10.4895115, 307.6923, 83.04196, 277.0979, 81.46854, 275.6993, 41.78322, 302.0979, 41.433567, 302.0979, 7.1678333, 239.16086, 6.293707, 236.39044, 108.741745, 236.88812, 133.74126, 231.46854, 133.39162, 231.46854, 115.55945, 226.9231, 115.034966, 181.64337, 113.63636, 180.94406, 209.61539, 147.55246, 210.13986, 147.55246, 197.9021, 176.74826, 198.6014, 176.74826, 102.79721, 230.06995, 102.97203, 231.64336, 5.4195843, 176.22379, 4.1958084, 36.188812, 2.622383, 38.286716, 196.5035, 98.251755, 195.62936, 97.55245, 208.56644)])
-sample_partition_type = 1
-agent_radius = 5.0
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
+vertices = PackedVector2Array(546.3672, 395.7578, 547.60156, 458, 481, 458, 481, 408, 378.46875, 393.7578, 430, 408, 413.82813, 122, 545.6406, 122, 545.35156, 138, 448, 138, 413.1797, 197, 448, 181, 502, 197, 545.1406, 181, 545.85156, 279.75, 502, 242, 381.53125, 277.7578, 318, 242, 147, 98.71875, 75, 99.71094, 75, 88, 170.96875, 88, 169.75781, 189, 147, 202, 169, 457.5078, 74.74219, 457.90625, 73.25781, 342, 127, 342, 169, 395.79688, 192.00781, 189, 191.17188, 285, 159, 285, 127, 286, 74.15625, 286, 74.84375, 202, 159, 340, 234.65625, 340, 268.15625, 396.78906, 269.17188, 278, 236.65625, 224, 333, 278, 279.71094, 224, 357.77344, 89, 368.85938, 89, 368.1328, 197, 356.77344, 174, 318, 197, 298.53906, 174, 430, 457.8672, 312.1172, 457.1172, 312.8828, 332, 333, 332, 281.70313, 88.25781, 300.45313, 90, 317, 88.72656, 317, 90)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(15, 14, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(18, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(23, 22, 29, 30, 31), PackedInt32Array(32, 33, 34, 23, 31), PackedInt32Array(32, 31, 35, 27), PackedInt32Array(28, 27, 35, 36, 37), PackedInt32Array(38, 37, 36, 39), PackedInt32Array(40, 38, 39, 41, 17, 16), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(45, 44, 46, 47), PackedInt32Array(5, 48, 49, 4), PackedInt32Array(4, 49, 50, 51), PackedInt32Array(16, 4, 51, 40), PackedInt32Array(46, 17, 41, 47), PackedInt32Array(47, 41, 52, 53), PackedInt32Array(53, 52, 54, 55)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(55, 68, 258, 68, 258.13586, 84.8455, 191, 85, 190, 169, 257, 169, 257, 191, 212, 191, 211, 305, 179, 305, 179, 320, 215, 320, 217, 204, 260, 204, 262, 68, 337, 69, 337, 110, 320, 110, 319, 154, 337, 154, 338, 69, 389, 69, 388, 217, 338, 217, 338, 222, 482, 222, 482, 217, 393, 217, 394, 102, 566, 102, 565, 158, 468, 158, 468, 161, 565, 161, 566, 300, 401, 298, 399, 374, 566, 376, 568, 478, 461, 478, 461, 428, 450, 428, 450, 478, 292, 477, 293, 312, 313, 312, 313, 298, 289, 298, 288, 417, 189, 416, 189, 444, 288, 444, 288, 477, 55, 478, 53, 322, 107, 322, 107, 306, 54, 306, 55, 182, 127, 182, 127, 119, 55, 120)])
+agent_radius = 20.0
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_4k17i")
@@ -36,70 +35,133 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("6_gjvd5")
 
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
-position = Vector2(-446.585, -580.945)
-scale = Vector2(5.72, 5.72)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1178839345]
-position = Vector2(34.018356, 81.63374)
-navigation_polygon = SubResource("NavigationPolygon_lnf1j")
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1931393382]
+position = Vector2(-1, -1)
+navigation_polygon = SubResource("NavigationPolygon_54wvq")
+use_edge_connections = false
+navigation_layers = 17
 
 [node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
-position = Vector2(291.71066, 132.50787)
+position = Vector2(290, 133)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
-patrol_speed = 100.0
-chase_speed = 130.0
-chase_speed_close = 90.0
-chase_speed_aggro = 100.0
-patrol_wait_min = 1.0
-patrol_wait_max = 2.0
-sight_distance = 380.0
-sight_memory_time = 5.0
-chase_lose_distance = 560.0
-close_attack_radius = 160.0
-far_attack_radius = 320.0
-melee_damage = 10
-melee_range = 140.0
-gas_patrol_radius = 300.0
-gas_combat_radius = 160.0
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
+
+[node name="Enemy3" parent="Game" unique_id=1413421460 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(125, 395)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
+
+[node name="Enemy2" parent="Game" unique_id=1447438685 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(505, 425)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
 [node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
-position = Vector2(123.52885, 330.5848)
+position = Vector2(79, 117)
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
-zoom = Vector2(0.805, 0.805)
+zoom = Vector2(0.88, 0.88)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
 [node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
-position = Vector2(139.96242, 168.8715)
+position = Vector2(158, 139)
 
 [node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
-position = Vector2(493.2841, 131.45892)
+position = Vector2(514, 130)
 
 [node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
 position = Vector2(289.43793, 149.29109)
 
 [node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
-position = Vector2(365.66174, 347.01837)
+position = Vector2(359, 426)
 
 [node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
-position = Vector2(483.14426, 345.61975)
+position = Vector2(521, 435)
 
 [node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
-position = Vector2(-26, 356)
+position = Vector2(73.53, 163.8)
+scale = Vector2(0.17483, 0.17483)
 metadata/_edit_lock_ = true
 
 [node name="UI" type="Control" parent="." unique_id=443723934]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 160.0
+offset_bottom = 90.0
 
 [node name="HUD" type="Control" parent="UI" unique_id=222779790]
 layout_mode = 1
@@ -120,8 +182,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HealthMeter" parent="UI/HUD" unique_id=643557903 instance=ExtResource("8_ymw2v")]
 layout_mode = 1
-offset_left = -112.0
-offset_right = -12.0
+offset_left = -28.0
+offset_right = -3.0
 
 [node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
 anchors_preset = 0
@@ -144,14 +206,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/normal_font_size = 3
 text = "Dev Tools (press  \" + \"  to hide/show)
 
 Quit Game:			Esc
@@ -159,6 +221,11 @@ Reload Game:		Tab
 Player Dash:	      	Shift"
 
 [node name="TutorialScreen" parent="UI" unique_id=369353349 instance=ExtResource("9_ymw2v")]
+visible = false
 layout_mode = 1
+offset_left = 58.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 118.0
 
 [editable path="Game/Player"]
