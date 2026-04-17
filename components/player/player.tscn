@@ -20,7 +20,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wa6cj"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfe3d"]
+
 [node name="Player" type="CharacterBody2D" unique_id=284675764]
+collision_mask = 26
 script = ExtResource("1_kfe3d")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1917120212]
@@ -32,3 +35,19 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924337548]
 shape = SubResource("CapsuleShape2D_wa6cj")
+
+[node name="TimerDashCooldown" type="Timer" parent="." unique_id=1897077925]
+one_shot = true
+
+[node name="TimerDashDuration" type="Timer" parent="." unique_id=1268488096]
+one_shot = true
+
+[node name="ItemDetector" type="Area2D" parent="." unique_id=1146637189]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDetector" unique_id=421785177]
+shape = SubResource("CapsuleShape2D_kfe3d")
+
+[connection signal="timeout" from="TimerDashCooldown" to="." method="_on_timer_dash_cooldown_timeout"]
+[connection signal="timeout" from="TimerDashDuration" to="." method="_on_timer_dash_duration_timeout"]
+[connection signal="body_entered" from="ItemDetector" to="." method="_on_item_detector_body_entered"]

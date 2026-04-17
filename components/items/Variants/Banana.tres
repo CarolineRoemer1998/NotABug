@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bywfccd17m23r"]
+
+[ext_resource type="Texture2D" uid="uid://car8bwintfd2h" path="res://components/items/TempArt/Banana.png" id="1_qqfxr"]
+[ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="1_viqge"]
+
+[resource]
+script = ExtResource("1_viqge")
+item_name = "Banana"
+type = 1
+fear_reduction = 30.0
+item_texture = ExtResource("1_qqfxr")
+wearable_texture = ExtResource("1_qqfxr")
+metadata/_custom_type_script = "uid://dtxdvlwyjt21l"

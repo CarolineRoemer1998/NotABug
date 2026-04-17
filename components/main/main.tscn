@@ -1,24 +1,231 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
+[ext_resource type="Script" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
+[ext_resource type="Script" path="res://components/items/ItemData.gd" id="2_wfiak"]
+[ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/BalloonHat.tres" id="3_w8ifq"]
+[ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Banana.tres" id="4_4t43m"]
+[ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Bubbles.tres" id="5_lnf1j"]
+[ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
+[ext_resource type="PackedScene" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
+[ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
+[ext_resource type="PackedScene" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
+[ext_resource type="PackedScene" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
 
-[node name="Main" type="Node2D" unique_id=354944633]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
+vertices = PackedVector2Array(546.3672, 395.7578, 547.60156, 458, 481, 458, 481, 408, 378.46875, 393.7578, 430, 408, 413.82813, 122, 545.6406, 122, 545.35156, 138, 448, 138, 413.1797, 197, 448, 181, 502, 197, 545.1406, 181, 545.85156, 279.75, 502, 242, 381.53125, 277.7578, 318, 242, 147, 98.71875, 75, 99.71094, 75, 88, 170.96875, 88, 169.75781, 189, 147, 202, 169, 457.5078, 74.74219, 457.90625, 73.25781, 342, 127, 342, 169, 395.79688, 192.00781, 189, 191.17188, 285, 159, 285, 127, 286, 74.15625, 286, 74.84375, 202, 159, 340, 234.65625, 340, 268.15625, 396.78906, 269.17188, 278, 236.65625, 224, 333, 278, 279.71094, 224, 357.77344, 89, 368.85938, 89, 368.1328, 197, 356.77344, 174, 318, 197, 298.53906, 174, 430, 457.8672, 312.1172, 457.1172, 312.8828, 332, 333, 332, 281.70313, 88.25781, 300.45313, 90, 317, 88.72656, 317, 90)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(12, 10, 11, 13), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(15, 14, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(18, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(23, 22, 29, 30, 31), PackedInt32Array(32, 33, 34, 23, 31), PackedInt32Array(32, 31, 35, 27), PackedInt32Array(28, 27, 35, 36, 37), PackedInt32Array(38, 37, 36, 39), PackedInt32Array(40, 38, 39, 41, 17, 16), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(45, 44, 46, 47), PackedInt32Array(5, 48, 49, 4), PackedInt32Array(4, 49, 50, 51), PackedInt32Array(16, 4, 51, 40), PackedInt32Array(46, 17, 41, 47), PackedInt32Array(47, 41, 52, 53), PackedInt32Array(53, 52, 54, 55)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(55, 68, 258, 68, 258.13586, 84.8455, 191, 85, 190, 169, 257, 169, 257, 191, 212, 191, 211, 305, 179, 305, 179, 320, 215, 320, 217, 204, 260, 204, 262, 68, 337, 69, 337, 110, 320, 110, 319, 154, 337, 154, 338, 69, 389, 69, 388, 217, 338, 217, 338, 222, 482, 222, 482, 217, 393, 217, 394, 102, 566, 102, 565, 158, 468, 158, 468, 161, 565, 161, 566, 300, 401, 298, 399, 374, 566, 376, 568, 478, 461, 478, 461, 428, 450, 428, 450, 478, 292, 477, 293, 312, 313, 312, 313, 298, 289, 298, 288, 417, 189, 416, 189, 444, 288, 444, 288, 477, 55, 478, 53, 322, 107, 322, 107, 306, 54, 306, 55, 182, 127, 182, 127, 119, 55, 120)])
+agent_radius = 20.0
+
+[node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_4k17i")
+spawn_points = [NodePath("Game/ItemSpawnPositions/Spawn1"), NodePath("Game/ItemSpawnPositions/Spawn2"), NodePath("Game/ItemSpawnPositions/Spawn3"), NodePath("Game/ItemSpawnPositions/Spawn4"), NodePath("Game/ItemSpawnPositions/Spawn5")]
+item_variants = Dictionary[ExtResource("2_wfiak"), bool]({
+ExtResource("3_w8ifq"): false,
+ExtResource("4_4t43m"): false,
+ExtResource("5_lnf1j"): false
+})
+
+[node name="Raumlayout" type="Sprite2D" parent="." unique_id=835788367]
+visible = false
+position = Vector2(1304, 366)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_gjvd5")
 
 [node name="Game" type="Node2D" parent="." unique_id=1669510031]
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Game" unique_id=1931393382]
+position = Vector2(-1, -1)
+navigation_polygon = SubResource("NavigationPolygon_54wvq")
+use_edge_connections = false
+navigation_layers = 17
+
+[node name="Enemy" parent="Game" unique_id=2099897293 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(290, 133)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
+
+[node name="Enemy3" parent="Game" unique_id=1413421460 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(125, 395)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
+
+[node name="Enemy2" parent="Game" unique_id=1447438685 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
+position = Vector2(505, 425)
+patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
+patrol_speed = 38.0
+chase_speed = 62.0
+chase_speed_close = 50.0
+chase_speed_aggro = 66.0
+melee_boost_speed = 45.0
+patrol_wait_min = 1.35
+patrol_wait_max = 2.85
+sight_distance = 115.0
+sight_half_angle_deg = 60.0
+alert_radius = 38.0
+sight_memory_time = 2.6
+chase_sight_distance_multiplier = 1.55
+chase_lose_distance = 70.0
+search_time_after_los = 3.5
+min_aggro_time = 10.0
+close_attack_radius = 30.0
+far_attack_radius = 100.0
+melee_adjacent = 5.0
+melee_damage = 5
+melee_range = 30.0
+gas_duration = 50.0
+gas_patrol_radius = 70.0
+gas_combat_radius = 38.0
+
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
-[node name="SpawnPoints" type="Node2D" parent="Game" unique_id=779876378]
+[node name="Items" type="Node2D" parent="Game" unique_id=779876378]
 
 [node name="Player" parent="Game" unique_id=284675764 instance=ExtResource("1_63q0e")]
-position = Vector2(72, 160)
+position = Vector2(79, 117)
 
-[node name="UI" type="Node2D" parent="." unique_id=907300178]
+[node name="Camera2D" type="Camera2D" parent="Game/Player" unique_id=1287668890]
+zoom = Vector2(0.88, 0.88)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
-[node name="HUD" type="Node2D" parent="UI" unique_id=764640308]
+[node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
-[node name="TutorialScreen" type="Node2D" parent="UI" unique_id=441429937]
+[node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
+position = Vector2(158, 139)
 
-[node name="WinScreen" type="Node2D" parent="UI" unique_id=138212533]
+[node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
+position = Vector2(514, 130)
 
-[node name="LoseScreen" type="Node2D" parent="UI" unique_id=1160093991]
+[node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
+position = Vector2(289.43793, 149.29109)
+
+[node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
+position = Vector2(359, 426)
+
+[node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
+position = Vector2(521, 435)
+
+[node name="BG" parent="." unique_id=120603730 instance=ExtResource("7_ymw2v")]
+position = Vector2(73.53, 163.8)
+scale = Vector2(0.17483, 0.17483)
+metadata/_edit_lock_ = true
+
+[node name="UI" type="Control" parent="." unique_id=443723934]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 90.0
+
+[node name="HUD" type="Control" parent="UI" unique_id=222779790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FearMeter" parent="UI/HUD" unique_id=1216261520 instance=ExtResource("7_gjvd5")]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9875
+anchor_right = 0.9875
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthMeter" parent="UI/HUD" unique_id=643557903 instance=ExtResource("8_ymw2v")]
+layout_mode = 1
+offset_left = -28.0
+offset_right = -3.0
+
+[node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
+anchors_preset = 0
+
+[node name="LoseScreen" type="Control" parent="UI" unique_id=753610665]
+anchors_preset = 0
+
+[node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DevUI" unique_id=1266564932]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DevUI/MarginContainer" unique_id=1656751864]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 3
+text = "Dev Tools (press  \" + \"  to hide/show)
+
+Quit Game:			Esc
+Reload Game:		Tab
+Player Dash:	      	Shift"
+
+[node name="TutorialScreen" parent="UI" unique_id=369353349 instance=ExtResource("9_ymw2v")]
+visible = false
+layout_mode = 1
+offset_left = 58.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 118.0
+
+[editable path="Game/Player"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blturomwm8a8h"]
+
+[ext_resource type="Script" uid="uid://bm377hkfwsb30" path="res://components/items/item.gd" id="1_cco1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cco1e"]
+
+[node name="Item" type="StaticBody2D" unique_id=240224973]
+collision_layer = 4
+script = ExtResource("1_cco1e")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1110195534]
+
+[node name="Sprite2D_AsCollectableItem" type="Sprite2D" parent="Visuals" unique_id=20108553]
+
+[node name="Sprite2D_AsWornByEnemy" type="Sprite2D" parent="Visuals" unique_id=1300389570]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810029213]
+shape = SubResource("CircleShape2D_cco1e")
