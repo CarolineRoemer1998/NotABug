@@ -43,15 +43,16 @@ func _process(delta: float) -> void:
 
 func handle_movement():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	print(input_direction)
 	if input_direction != Vector2.ZERO:
 		dash_direction = input_direction
 	if is_dashing:
 		velocity = dash_direction * current_speed
 	else:
 		velocity = input_direction * current_speed
-	if input_direction == Vector2.LEFT:
+	if input_direction[0] < 0:
 		animated_sprite_2d.scale = Vector2(-1.0, 1.0)
-	elif input_direction == Vector2.RIGHT:
+	elif input_direction[0] > 0:
 		animated_sprite_2d.scale = Vector2(1.0, 1.0)
 	if velocity != Vector2.ZERO:
 		if GameManager.current_fear / GameManager.init_fear > percentage_for_scared_animations:
