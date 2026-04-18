@@ -3,7 +3,7 @@ extends StaticBody2D
 
 enum TYPE { Hat, MeleeWeapon, RangedWeapon, Shoes, Mouth, Top, Bottom } # nicht final
 
-@onready var sprite_2d_as_collectable_item: Sprite2D = $Visuals/Sprite2D_AsCollectableItem
+@onready var sprite_2d_as_collectable_item: AnimatedSprite2D = $Visuals/Sprite2D_AsCollectableItem
 @onready var sprite_2d_as_worn_by_enemy: Sprite2D = $Visuals/Sprite2D_AsWornByEnemy
 
 const ITEM : PackedScene = preload("res://components/items/item.tscn")
@@ -18,6 +18,7 @@ static func get_new_item(_item_data: ItemData):
 func _ready() -> void:
 	Signals.item_collected.connect(handle_item_collected)
 	set_data()
+	sprite_2d_as_collectable_item.play("floating")
 
 func handle_item_collected(_item: Item):
 	if _item == self:
@@ -25,4 +26,4 @@ func handle_item_collected(_item: Item):
 
 func set_data():
 	name = item_data.item_name
-	sprite_2d_as_collectable_item.texture = item_data.item_texture
+	sprite_2d_as_collectable_item.sprite_frames = item_data.item_texture
