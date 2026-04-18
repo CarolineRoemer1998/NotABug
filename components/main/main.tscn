@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Shoes.tres" id="4_jj6qt"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Pie.tres" id="5_hwayo"]
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
-[ext_resource type="PackedScene" path="res://enemy.tscn" id="6_lnf1j"]
+[ext_resource type="PackedScene" uid="uid://c47mkfnkbce34" path="res://enemy.tscn" id="6_lnf1j"]
 [ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
 [ext_resource type="SpriteFrames" uid="uid://drrfuhvwcu2xj" path="res://art/Monster_nahangriff.tres" id="8_jj6qt"]
@@ -173,10 +173,10 @@ frame_progress = 0.021531722
 position = Vector2(158, 139)
 
 [node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
-position = Vector2(480, 96)
+position = Vector2(520, 96)
 
 [node name="Spawn3" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1650519088]
-position = Vector2(584, 384)
+position = Vector2(504, 376)
 
 [node name="Spawn4" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=780350623]
 position = Vector2(359, 426)

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://wr6npsef4vte"]
+[gd_scene format=3 uid="uid://c47mkfnkbce34"]
 
-[ext_resource type="Script" uid="uid://di2xory4q4m0d" path="res://components/enemy.gd" id="1_4gyqm"]
+[ext_resource type="Script" path="res://components/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://bd71jk05ct0j7" path="res://art/Enemy_fake_sprite.png" id="1_7k104"]
 [ext_resource type="PackedScene" path="res://scenes/attacks/projectile.tscn" id="2_8kprj"]
 [ext_resource type="PackedScene" uid="uid://cman5vtgbx48y" path="res://scenes/attacks/gas_zone.tscn" id="3_9gasz"]
@@ -262,12 +262,15 @@ position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_18rq2")
 animation = &"Idle"
 
-[node name="StateIndicator" type="Label" parent="."]
-z_index = 10
-position = Vector2(-6, -42)
-text = "!"
+[node name="StateIndicator" type="Label" parent="." unique_id=999101710]
 visible = false
+z_index = 10
+offset_left = -6.0
+offset_top = -42.0
+offset_right = -6.0
+offset_bottom = -42.0
 theme_override_font_sizes/font_size = 14
+text = "!"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747184921]
 position = Vector2(0, -13)

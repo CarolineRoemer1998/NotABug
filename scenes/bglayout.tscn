@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://djtbniwgojuhe" path="res://scenes/Redblock.tscn" id="2_q778t"]
 [ext_resource type="PackedScene" uid="uid://dpaydyyn1pjfq" path="res://scenes/wobble_overlay.tscn" id="3_y7qsj"]
 [ext_resource type="PackedScene" uid="uid://chs8g8dsb8ggb" path="res://scenes/glitch_overlay.tscn" id="4_ndw6h"]
+[ext_resource type="Texture2D" uid="uid://1krd5bqdgf82" path="res://art/Environment/Raumlayoutboden.png" id="5_3nrbm"]
+[ext_resource type="Texture2D" uid="uid://bn6ullv6y565i" path="res://art/Environment/Raumlayout_Wande.png" id="5_doo2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q778t"]
 size = Vector2(124, 71.709785)
@@ -60,6 +62,7 @@ size = Vector2(124, 98.93436)
 size = Vector2(124, 124.93703)
 
 [node name="BG" type="Node2D" unique_id=120603730]
+z_index = 10
 position = Vector2(-68, -62)
 
 [node name="Raumlayout" type="Sprite2D" parent="." unique_id=1340256420]
@@ -202,7 +205,6 @@ shape = SubResource("RectangleShape2D_3riq6")
 position = Vector2(10.526316, 30.30303)
 
 [node name="Node2D14" parent="." unique_id=12219147 groups=["navigation_polygon_source_geometry_group"] instance=ExtResource("2_q778t")]
-visible = false
 position = Vector2(2740, 409.00003)
 scale = Vector2(0.975, 0.91)
 
@@ -552,6 +554,18 @@ position = Vector2(980.99994, 1575.9999)
 
 [node name="Glitch2" parent="." unique_id=1968838826 instance=ExtResource("4_ndw6h")]
 position = Vector2(2618, 1057)
+
+[node name="Boden" type="Sprite2D" parent="." unique_id=300525513]
+modulate = Color(1, 1, 1, 0.6431373)
+z_index = -1
+z_as_relative = false
+position = Vector2(1340, 422)
+texture = ExtResource("5_3nrbm")
+
+[node name="Wände" type="Sprite2D" parent="." unique_id=1234668540]
+modulate = Color(1, 1, 1, 0.72156864)
+position = Vector2(1340, 422)
+texture = ExtResource("5_doo2m")
 
 [editable path="Node2D"]
 [editable path="Node2D2"]

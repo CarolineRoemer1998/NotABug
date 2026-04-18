@@ -8,13 +8,17 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfe3d"]
 
 [node name="Player" type="CharacterBody2D" unique_id=284675764]
+z_index = 50
+z_as_relative = false
 collision_mask = 26
 script = ExtResource("1_kfe3d")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1917120212]
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, -8)
+scale = Vector2(0.125, 0.125)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=285574132]
+position = Vector2(0, -106.666664)
 scale = Vector2(-1, 1)
 sprite_frames = ExtResource("2_kfe3d")
 animation = &"walk_scared"

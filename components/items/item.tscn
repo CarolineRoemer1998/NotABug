@@ -10,6 +10,8 @@ collision_layer = 4
 script = ExtResource("1_cco1e")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1110195534]
+z_index = 37
+z_as_relative = false
 scale = Vector2(0.16, 0.16)
 
 [node name="Sprite2D_AsCollectableItem" type="AnimatedSprite2D" parent="Visuals" unique_id=1541126980]

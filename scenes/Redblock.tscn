@@ -15,5 +15,6 @@ collision_mask = 16
 shape = SubResource("RectangleShape2D_xfx5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=744997658]
+visible = false
 modulate = Color(1, 0.26000598, 0.2008352, 1)
 texture = ExtResource("1_hfpjm")
