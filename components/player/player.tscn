@@ -1,22 +1,7 @@
 [gd_scene format=3 uid="uid://bhyxdb3jxn2cx"]
 
 [ext_resource type="Script" uid="uid://c5inajm5fpg8q" path="res://components/player/player.gd" id="1_kfe3d"]
-[ext_resource type="Texture2D" uid="uid://cipyrvkwa3dbf" path="res://icon.svg" id="1_t3162"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfe3d"]
-atlas = ExtResource("1_t3162")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ph1f6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfe3d")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://vgrw7lu44vs8" path="res://art/Person_Walkcycle.tres" id="2_kfe3d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wa6cj"]
 
@@ -27,11 +12,12 @@ collision_mask = 26
 script = ExtResource("1_kfe3d")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1917120212]
+scale = Vector2(0.15, 0.15)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=285574132]
-scale = Vector2(0.15625, 0.25)
-sprite_frames = SubResource("SpriteFrames_ph1f6")
-animation = &"idle"
+scale = Vector2(-1, 1)
+sprite_frames = ExtResource("2_kfe3d")
+animation = &"walk_scared"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924337548]
 shape = SubResource("CapsuleShape2D_wa6cj")
@@ -47,6 +33,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDetector" unique_id=421785177]
 shape = SubResource("CapsuleShape2D_kfe3d")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1815525781]
+position = Vector2(18.375494, 0.097416155)
+zoom = Vector2(0.535, 0.535)
+limit_left = 568
+limit_top = -7
+limit_right = 47
+limit_bottom = 478
 
 [connection signal="timeout" from="TimerDashCooldown" to="." method="_on_timer_dash_cooldown_timeout"]
 [connection signal="timeout" from="TimerDashDuration" to="." method="_on_timer_dash_duration_timeout"]

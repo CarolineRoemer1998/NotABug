@@ -3,8 +3,10 @@ extends Node
 
 enum STATE { Tutorial, Playing, Won, Lost }
 
-var current_health : float = 100.0
-var current_fear : float = 100.0
+var init_health : float = 100.0
+var init_fear : float = 100.0
+var current_health : float = init_health
+var current_fear : float = init_fear
 
 var current_game_state : STATE = STATE.Playing # TODO: zurück zu Tutorial ändern für Export
 

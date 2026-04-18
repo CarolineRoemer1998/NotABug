@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_npvuh")
 item_name = "Balloon Hat"
-fear_reduction = 15.0
+fear_reduction = 60.0
 item_texture = ExtResource("1_t7vn7")
 wearable_texture = ExtResource("1_t7vn7")
 metadata/_custom_type_script = "uid://dtxdvlwyjt21l"

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var life_meter: ProgressBar = get_node_or_null("UI/LifeMeter") as ProgressBar
 
 @onready var timer_dash_cooldown: Timer = $TimerDashCooldown
+@onready var animated_sprite_2d: AnimatedSprite2D = $Visuals/AnimatedSprite2D
 
 @onready var timer_dash_duration: Timer = $TimerDashDuration
 @export var dash_duration_in_seconds: float = 0.36
@@ -14,6 +15,8 @@ extends CharacterBody2D
 @export var speed_normal: float = 105.0
 @export var speed_dash: float = 300.0
 
+const percentage_for_scared_animations := 0.5
+
 var current_speed := 0.0
 var is_dashing := false
 var dash_direction := Vector2.ZERO
@@ -22,6 +25,7 @@ var dash_direction := Vector2.ZERO
 @export var damage_iframe_seconds: float = 0.35
 var _damage_iframe_left: float = 0.0
 var _life: int = 0
+var current_animation : String = ""
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -45,6 +49,20 @@ func handle_movement():
 		velocity = dash_direction * current_speed
 	else:
 		velocity = input_direction * current_speed
+	if input_direction == Vector2.LEFT:
+		animated_sprite_2d.scale = Vector2(-1.0, 1.0)
+	elif input_direction == Vector2.RIGHT:
+		animated_sprite_2d.scale = Vector2(1.0, 1.0)
+	if velocity != Vector2.ZERO:
+		if GameManager.current_fear / GameManager.init_fear > percentage_for_scared_animations:
+			animated_sprite_2d.play("walk_scared")
+		else:
+			animated_sprite_2d.play("walk")
+	else:
+		if GameManager.current_fear / GameManager.init_fear > percentage_for_scared_animations:
+			animated_sprite_2d.play("idle_scared")
+		else:
+			animated_sprite_2d.play("idle")
 	move_and_slide()
 
 func handle_action_input():
