@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func handle_item_collected(_item: Item):
 	if _item == self:
-		sprite_2d_as_collectable_item.visible = false
+		queue_free()
 
 func set_data():
 	name = item_data.item_name
