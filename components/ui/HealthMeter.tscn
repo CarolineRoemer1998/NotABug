@@ -1,23 +1,61 @@
 [gd_scene format=3 uid="uid://b33sjjgwdkdag"]
 
+[ext_resource type="Theme" uid="uid://d36yfu0ple8dp" path="res://fonts&themes/progressbar-label-theme.tres" id="1_gypwu"]
+
+[sub_resource type="Theme" id="Theme_u5gms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5gms"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+shadow_color = Color(0, 0, 0, 0.39607844)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvpev"]
+bg_color = Color(0.4, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="HealthMeter" type="ProgressBar" unique_id=643557903]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -104.0
-offset_top = 40.0
-offset_right = -4.0
-offset_bottom = 67.0
+offset_left = -480.0
+offset_right = -455.0
+offset_bottom = 75.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(1, 0)
+theme = SubResource("Theme_u5gms")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_u5gms")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rvpev")
 value = 100.0
 rounded = true
+fill_mode = 3
+show_percentage = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1451392643]
 layout_mode = 0
-offset_left = -112.0
-offset_right = -12.0
-offset_bottom = 40.0
+offset_left = -24.0
+offset_top = 64.0
+offset_right = 51.0
+offset_bottom = 104.0
 pivot_offset_ratio = Vector2(1, 0)
-text = "Health"
-horizontal_alignment = 2
+theme = ExtResource("1_gypwu")
+theme_override_constants/outline_size = 6
+text = "HP"
+horizontal_alignment = 1
