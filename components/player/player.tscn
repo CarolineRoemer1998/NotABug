@@ -4,6 +4,8 @@
 [ext_resource type="SpriteFrames" uid="uid://vgrw7lu44vs8" path="res://art/Person_Walkcycle.tres" id="2_kfe3d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wa6cj"]
+radius = 5.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfe3d"]
 
