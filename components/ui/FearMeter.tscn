@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dx06he1lbi1w8" path="res://components/ui/FearMeter.gd" id="1_ah75i"]
 [ext_resource type="Theme" uid="uid://d36yfu0ple8dp" path="res://fonts&themes/progressbar-label-theme.tres" id="2_u5gms"]
+[ext_resource type="Shader" uid="uid://cc7k35411pte" path="res://shaders/glitch_shader.gdshader" id="3_inr1r"]
+[ext_resource type="PackedScene" uid="uid://chs8g8dsb8ggb" path="res://scenes/glitch_overlay.tscn" id="3_rvpev"]
 
 [sub_resource type="Theme" id="Theme_u5gms"]
 
@@ -20,7 +22,7 @@ shadow_color = Color(0, 0, 0, 0.39607844)
 shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvpev"]
-bg_color = Color(0.4, 0, 0, 1)
+bg_color = Color(0.37, 0, 0.3083334, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -30,6 +32,14 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inr1r"]
+shader = ExtResource("3_inr1r")
+shader_parameter/shake_power = 0.005
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 0.001
+shader_parameter/shake_block_size = 0.001
+shader_parameter/shake_color_rate = 0.0050000002375
 
 [node name="FearMeter" type="ProgressBar" unique_id=1216261520]
 anchors_preset = 1
@@ -61,3 +71,18 @@ theme = ExtResource("2_u5gms")
 theme_override_constants/outline_size = 6
 text = "Fear"
 horizontal_alignment = 1
+
+[node name="Glitch" parent="." unique_id=1063543316 instance=ExtResource("3_rvpev")]
+
+[node name="Glitchoverlay" parent="Glitch" index="1" unique_id=1955965157]
+material = SubResource("ShaderMaterial_inr1r")
+position = Vector2(33, 38.5)
+scale = Vector2(0.8125, 0.6953125)
+
+[node name="TimerGlitch" type="Timer" parent="." unique_id=366354953]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="TimerGlitch" to="." method="_on_timer_glitch_timeout"]
+
+[editable path="Glitch"]
