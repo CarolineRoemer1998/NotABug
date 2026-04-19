@@ -8,3 +8,4 @@ func _ready() -> void:
 func reduce_fog(_item: Item):
 	var modulate_val = (GameManager.current_fear / GameManager.init_fear)
 	color_rect.modulate = Color(1,1,1,modulate_val)
+	

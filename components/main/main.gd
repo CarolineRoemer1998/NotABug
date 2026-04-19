@@ -4,6 +4,7 @@ extends Node2D
 @onready var dev_ui: Control = $UI/DevUI
 @onready var lose_screen: Control = $UI/LoseScreen
 @onready var win_screen: Control = $UI/WinScreen
+@onready var bgm_player = $bgm_player
 
 @export var spawn_points : Array[Node2D]
 @export var item_variants : Dictionary[ItemData, bool] # true: ItemData hat SpawnPoint zugewiesen bekommen
@@ -12,6 +13,10 @@ const ITEM : PackedScene = preload("res://components/items/item.tscn")
 
 
 func _ready() -> void:
+	#TODO BGM leiser machen mit jedem gesammelten Item?
+	bgm_player.stream = preload("res://sound/bgm_342902__doty21__scary-ambience-3.wav")
+	bgm_player.play()
+ 	
 	lose_screen.visible = false
 	win_screen.visible = false
 	spawn_items()

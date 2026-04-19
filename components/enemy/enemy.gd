@@ -130,9 +130,21 @@ var _investigate_pos: Vector2 = Vector2.ZERO
 var _hearing_cd: float = 0.0
 var _hearing_freeze_left: float = 0.0
 
+@onready var sfx_slash = $sfx_enemy_slash #play from 0.22
+@onready var sfx_walk = $sfx_enemy_walk
+@onready var sfx_funny = $sfx_enemy_funny
+@onready var sfx_projectile = $sfx_enemy_projectile
+@onready var sfx_aoe = $sfx_enemy_aoe
 
-func _ready() -> void:
+func _ready() -> void:	
 	add_to_group("Enemies")
+	
+	sfx_slash.stream = preload("res://sound/slash_559976__starkvind__ninja-jump.wav")
+	sfx_walk.stream = preload("res://sound/enemywalk_389517__apallot__squelch.wav")
+	sfx_funny.stream = preload("res://sound/enemywalkfunny_468443__breviceps__squeaky-toy-1.wav")
+	sfx_projectile.stream = preload("res://sound/projektil_214891__fantozzi__the-big-squeak-15-schpunk-2.wav")
+	sfx_aoe.stream = preload("res://sound/aoe.wav")
+	
 	_build_waypoints()
 	far_attack_radius = minf(far_attack_radius, sight_distance)
 	melee_adjacent = maxf(melee_adjacent, melee_range)
@@ -140,7 +152,6 @@ func _ready() -> void:
 	_nav.target_desired_distance = 16.0
 	_nav.radius = 11.0
 	call_deferred("_deferred_nav_setup")
-
 
 func _deferred_nav_setup() -> void:
 	await get_tree().physics_frame
@@ -707,6 +718,7 @@ func _do_melee() -> void:
 	else:
 		_melee_anim_left = 0.25
 	_spawn_melee_hitbox()
+	sfx_slash.play(0.22)
 
 
 func _spawn_melee_hitbox() -> void:
@@ -763,6 +775,7 @@ func _do_ranged_toward(target_pos: Vector2) -> void:
 	if proj.has_method("configure"):
 		proj.call("configure", dir)
 	get_tree().current_scene.add_child(proj)
+	sfx_projectile.play(0.2)
 
 
 func _spawn_patrol_gas() -> void:
@@ -781,6 +794,7 @@ func _spawn_patrol_gas() -> void:
 	if gas.has_method("configure"):
 		gas.call("configure", gas_duration, gas_patrol_radius)
 	get_tree().current_scene.add_child(gas)
+	sfx_aoe.play()
 
 
 func _spawn_combat_gas_at(world_pos: Vector2) -> void:
