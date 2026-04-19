@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://blturomwm8a8h"]
 
 [ext_resource type="Script" uid="uid://bm377hkfwsb30" path="res://components/items/item.gd" id="1_cco1e"]
+[ext_resource type="SpriteFrames" uid="uid://dw7safoehffg7" path="res://components/items/SpriteFrames/ItemShoes.tres" id="2_rtbc8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cco1e"]
 
@@ -9,8 +10,14 @@ collision_layer = 4
 script = ExtResource("1_cco1e")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1110195534]
+z_index = 37
+z_as_relative = false
+scale = Vector2(0.16, 0.16)
 
-[node name="Sprite2D_AsCollectableItem" type="Sprite2D" parent="Visuals" unique_id=20108553]
+[node name="Sprite2D_AsCollectableItem" type="AnimatedSprite2D" parent="Visuals" unique_id=1541126980]
+sprite_frames = ExtResource("2_rtbc8")
+animation = &"floating"
+frame_progress = 0.36359677
 
 [node name="Sprite2D_AsWornByEnemy" type="Sprite2D" parent="Visuals" unique_id=1300389570]
 visible = false
