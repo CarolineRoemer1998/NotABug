@@ -28,8 +28,18 @@ var _life: int = 0
 var _dead: bool = false
 var current_animation : String = ""
 
+@onready var sfx_walk = $sfx_player_walk
+@onready var sfx_hit = $sfx_player_hit
+@onready var sfx_dash = $sfx_player_dash
+@onready var is_walking = false
+
 func _ready() -> void:
 	add_to_group("Player")
+	
+	sfx_walk.stream = preload("res://sound/playerwalk_801034__riforka__sfx_indoor_carpetsteps.wav")
+	sfx_hit.stream = preload("res://sound/playerhit.wav")
+	sfx_dash.stream = preload("res://sound/playerdash_585257__lesaucisson__swoosh-1.mp3")
+	
 	current_speed = speed_normal
 	_life = max_life
 	if life_meter != null:
@@ -66,20 +76,33 @@ func handle_movement():
 	elif input_direction[0] > 0:
 		animated_sprite_2d.scale = Vector2(1.0, 1.0)
 	if velocity != Vector2.ZERO:
+		is_walking = true
 		if GameManager.current_fear / GameManager.init_fear > percentage_for_scared_animations:
 			animated_sprite_2d.play("walk_scared")
 		else:
 			animated_sprite_2d.play("walk")
 	else:
+		is_walking = false
 		if GameManager.current_fear / GameManager.init_fear > percentage_for_scared_animations:
 			animated_sprite_2d.play("idle_scared")
 		else:
 			animated_sprite_2d.play("idle")
+	check_walking(is_walking)
 	move_and_slide()
+	
+func check_walking(walk: bool):
+	if is_walking:
+		if !sfx_walk.playing:
+			sfx_walk.play()
+		else:
+			sfx_walk.stream_paused = false
+	else:
+		sfx_walk.stream_paused = true
 
 func handle_action_input():
 	if Input.is_action_just_pressed("dash"):
 		if timer_dash_cooldown.time_left == 0:
+			sfx_dash.play(0.1)
 			current_speed = speed_dash
 			is_dashing = true
 			timer_dash_cooldown.start(dash_cooldown_in_seconds)
@@ -90,6 +113,7 @@ func _on_timer_dash_duration_timeout() -> void:
 	current_speed = speed_normal
 
 func take_damage(amount: int) -> void:
+	sfx_hit.play()
 	if _dead:
 		return
 	if amount <= 0:

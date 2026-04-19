@@ -24,3 +24,8 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1810029213]
 shape = SubResource("CircleShape2D_cco1e")
+
+[node name="sfx_itemfwoop" type="AudioStreamPlayer2D" parent="." unique_id=1696108826]
+
+[node name="sfx_itemsparkle" type="AudioStreamPlayer2D" parent="." unique_id=1632377425]
+volume_db = -5.0
