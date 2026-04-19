@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 110.0
-@export var damage: int = 1
+@export var damage: int = 2
 @export var lifetime: float = 4.0
 @export var visual_radius: float = 3.0
 @export var visual_color: Color = Color(1.0, 0.95, 0.2, 0.95)

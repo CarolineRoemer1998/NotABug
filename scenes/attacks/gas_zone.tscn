@@ -19,7 +19,62 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1121045732]
-position = Vector2(78, -8)
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(77, -47)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=520296937]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(77, 15)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=674391359]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(50.999996, -17)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=714219995]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(105, -17)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1976174799]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(50, -47)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1313833778]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(102, -47)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1041755441]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(50, 15)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=202751156]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(103, 16)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=697468013]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(77, -80)
+scale = Vector2(0.09564908, 0.3781172)
+texture = ExtResource("2_3x7n7")
+
+[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=418485120]
+modulate = Color(1, 1, 1, 0.49019608)
+position = Vector2(78, 49)
 scale = Vector2(0.09564908, 0.3781172)
 texture = ExtResource("2_3x7n7")
 

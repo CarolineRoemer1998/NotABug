@@ -14,6 +14,22 @@ var current_game_state: STATE = STATE.Playing
 
 var collected_items: Array[Item] = []
 
+
+func is_game_ended() -> bool:
+	return current_game_state == STATE.Won or current_game_state == STATE.Lost
+
+
+## Autoload survives `reload_current_scene()`; reset run state whenever the level scene loads.
+func reset_for_new_run() -> void:
+	current_game_state = STATE.Playing
+	current_health = init_health
+	current_fear = init_fear
+	collected_items.clear()
+	cosmetic_order.clear()
+	disabled_attacks.clear()
+	phase = Phase.None
+
+
 ## Order the player picked up Handschuhe / Trompete / Brille (max 3).
 var cosmetic_order: Array[String] = []
 

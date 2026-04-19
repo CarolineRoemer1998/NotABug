@@ -5,6 +5,8 @@ extends Node2D
 @onready var lose_screen: Control = $UI/LoseScreen
 @onready var win_screen: Control = $UI/WinScreen
 @onready var bgm_player = $bgm_player
+@onready var fog: Node = $UI/Fog
+@onready var tutorial_screen: CanvasItem = $UI/TutorialScreen
 
 @export var spawn_points : Array[Node2D]
 @export var item_variants : Dictionary[ItemData, bool] # true: ItemData hat SpawnPoint zugewiesen bekommen
@@ -13,6 +15,8 @@ const ITEM : PackedScene = preload("res://components/items/item.tscn")
 
 
 func _ready() -> void:
+	GameManager.reset_for_new_run()
+
 	#TODO BGM leiser machen mit jedem gesammelten Item?
 	bgm_player.stream = preload("res://sound/bgm_342902__doty21__scary-ambience-3.wav")
 	bgm_player.play()
@@ -62,8 +66,19 @@ func handle_inputs():
 
 
 func _on_player_died() -> void:
+	# Fog / Tutorial use top_level nodes that can draw above and block clicks on siblings below.
+	if fog:
+		fog.visible = false
+	if tutorial_screen:
+		tutorial_screen.visible = false
 	lose_screen.visible = true
+	lose_screen.move_to_front()
 
 
 func _on_game_won() -> void:
+	if fog:
+		fog.visible = false
+	if tutorial_screen:
+		tutorial_screen.visible = false
 	win_screen.visible = true
+	win_screen.move_to_front()

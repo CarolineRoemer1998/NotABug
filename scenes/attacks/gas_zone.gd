@@ -2,7 +2,7 @@ extends Area2D
 
 @export var tick_damage: int = 1
 @export var tick_interval: float = 0.5
-@export var debug_draw: bool = true
+@export var debug_draw: bool = false
 @export var draw_color: Color = Color(0.55, 0.95, 0.55, 0.25)
 
 var _time_left: float = 2.5

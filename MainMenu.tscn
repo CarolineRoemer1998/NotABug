@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwdinpc4mdy25"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_7j4xj"]
+[ext_resource type="Script" uid="uid://dbeld65x71re0" path="res://MainMenu.gd" id="1_7j4xj"]
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="2_8m1lt"]
 [ext_resource type="FontFile" uid="uid://bvkqkdcpc5wyb" path="res://fonts&themes/j_jerami/jJerami.ttf" id="3_font"]
 
@@ -10,43 +10,7 @@ content_margin_top = 6.0
 content_margin_right = 10.0
 content_margin_bottom = 6.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
-bg_color = Color(0.52, 0.24, 0.34, 0.88)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.42, 0.16, 0.26, 1.0)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-shadow_color = Color(0.5, 0.2, 0.32, 0.45)
-shadow_size = 8
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
-bg_color = Color(0.42, 0.18, 0.28, 0.95)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.35, 0.12, 0.22, 1.0)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-shadow_color = Color(0.4, 0.15, 0.25, 0.3)
-shadow_size = 4
-content_margin_left = 10.0
-content_margin_top = 6.0
-content_margin_right = 10.0
-content_margin_bottom = 6.0
-
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1050501974]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +20,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7j4xj")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1553532720]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,7 +32,7 @@ mouse_filter = 2
 texture = ExtResource("2_8m1lt")
 stretch_mode = 6
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Dim" type="ColorRect" parent="." unique_id=420583999]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,9 +40,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.02, 0.01, 0.0, 0.52)
+color = Color(0.02, 0.01, 0, 0.52)
 
-[node name="Content" type="MarginContainer" parent="."]
+[node name="Content" type="MarginContainer" parent="." unique_id=581946871]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,73 +54,86 @@ theme_override_constants/margin_top = 88
 theme_override_constants/margin_right = 56
 theme_override_constants/margin_bottom = 56
 
-[node name="VBox" type="VBoxContainer" parent="Content"]
+[node name="VBox" type="VBoxContainer" parent="Content" unique_id=1817352717]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Content/VBox"]
+[node name="TitleTopPad" type="Control" parent="Content/VBox" unique_id=1857070001]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="TitleRow" type="HBoxContainer" parent="Content/VBox" unique_id=1857070002]
+layout_mode = 2
+
+[node name="TitleLeftPad" type="Control" parent="Content/VBox/TitleRow" unique_id=1857070003]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/VBox/TitleRow" unique_id=858071635]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Monday"
-horizontal_alignment = 0
+mouse_filter = 0
 theme_override_colors/font_color = Color(0.9, 0.82, 0.72, 1)
 theme_override_colors/font_outline_color = Color(0.1, 0.06, 0.04, 1)
 theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 88
-theme_override_fonts/font = ExtResource("3_font")
+text = "Monday"
 
-[node name="TitleSpacer" type="Control" parent="Content/VBox"]
+[node name="TitleSpacer" type="Control" parent="Content/VBox" unique_id=1605954340]
 unique_name_in_owner = true
-layout_mode = 2
 custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
 
-[node name="StartButton" type="Button" parent="Content/VBox"]
+[node name="StartButton" type="Button" parent="Content/VBox" unique_id=257419360]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(0, 46)
+theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
 text = "Start Game"
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
 
-[node name="BtnSep1" type="Control" parent="Content/VBox"]
-layout_mode = 2
+[node name="BtnSep1" type="Control" parent="Content/VBox" unique_id=1001620959]
 custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="Content/VBox"]
+[node name="OptionsButton" type="Button" parent="Content/VBox" unique_id=167860213]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(0, 46)
+theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
 text = "Options"
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
 
-[node name="BtnSep2" type="Control" parent="Content/VBox"]
-layout_mode = 2
+[node name="BtnSep2" type="Control" parent="Content/VBox" unique_id=1056948847]
 custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
-[node name="ExitButton" type="Button" parent="Content/VBox"]
+[node name="ExitButton" type="Button" parent="Content/VBox" unique_id=443727358]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(0, 46)
-text = "Exit"
 theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_font_sizes/font_size = 24
 theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_normal")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+text = "Exit"

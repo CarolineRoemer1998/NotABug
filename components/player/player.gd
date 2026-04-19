@@ -56,8 +56,8 @@ func bind_life_meter(meter: ProgressBar) -> void:
 func _process(delta: float) -> void:
 	if GameManager.current_game_state == GameManager.STATE.Playing:
 		_damage_iframe_left = maxf(0.0, _damage_iframe_left - delta)
-	if GameManager.current_game_state == GameManager.STATE.Lost \
-			or GameManager.current_game_state == GameManager.STATE.Won:
+	if GameManager.is_game_ended():
+		velocity = Vector2.ZERO
 		return
 	handle_movement()
 	handle_action_input()
@@ -113,6 +113,8 @@ func _on_timer_dash_duration_timeout() -> void:
 	current_speed = speed_normal
 
 func take_damage(amount: int) -> void:
+	if GameManager.is_game_ended():
+		return
 	sfx_hit.play()
 	if _dead:
 		return
@@ -151,6 +153,8 @@ func _die() -> void:
 
 
 func _on_item_detector_body_entered(item: Item) -> void:
+	if GameManager.is_game_ended():
+		return
 	if item == null or not is_instance_valid(item):
 		return
 	# Prevent re-trigger loops when an item respawns under the player.

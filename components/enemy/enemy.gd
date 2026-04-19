@@ -151,6 +151,7 @@ func _ready() -> void:
 	_nav.path_desired_distance = 10.0
 	_nav.target_desired_distance = 16.0
 	_nav.radius = 11.0
+	_nav.debug_enabled = false
 	call_deferred("_deferred_nav_setup")
 
 func _deferred_nav_setup() -> void:
@@ -182,6 +183,10 @@ func _build_waypoints() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if GameManager.is_game_ended():
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	_tick_cooldowns(delta)
 	_update_sight(delta)
 	_update_state_from_awareness(delta)
@@ -362,7 +367,6 @@ func _draw() -> void:
 	draw_colored_polygon(pts, cone_color)
 	if outline.size() >= 2:
 		draw_polyline(outline, cone_edge_color, 2.0)
-	draw_arc(Vector2.ZERO, draw_alert, 0.0, TAU, 32, Color(1.0, 0.6, 0.1, 0.5), 1.5, true)
 
 
 func _gas_only_offense_mode() -> bool:
