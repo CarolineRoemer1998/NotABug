@@ -56,15 +56,27 @@ enum State { PATROL, CHASE, LOOK }
 @export var melee_adjacent: float = 22.0
 @export var melee_damage: int = 1
 @export var melee_range: float = 44.0
+## Slash should only trigger when very close (independent of hitbox size).
+@export var melee_slash_trigger_distance: float = 18.0
 
 @export var melee_cooldown: float = 0.9
-@export var gas_cooldown: float = 5.0
+@export var gas_cooldown: float = 6.0
 @export var ranged_cooldown: float = 1.6
 
-@export var gas_duration: float = 10.0
+## When Slash is disabled, enemy prefers to keep distance and use projectiles.
+@export var ranged_preferred_distance_when_no_melee: float = 110.0
+@export var ranged_keepaway_distance_when_no_melee: float = 70.0
+@export var ranged_cooldown_multiplier_when_no_melee: float = 0.65
+@export var chase_speed_multiplier_when_no_melee: float = 0.85
+
+@export var gas_duration: float = 6.0
 @export var gas_patrol_radius: float = 72.0
-@export var gas_patrol_chance: float = 0.1
-@export var gas_combat_radius: float = 96.0
+@export var gas_patrol_chance: float = 0.08
+@export var gas_combat_radius: float = 90.0
+## When Slash + Distance are both disabled, gas is the only weapon: cast when this close to the target.
+@export var gas_offensive_cast_range: float = 160.0
+## Cooldown for that offensive gas (usually shorter than gas_cooldown).
+@export var gas_offensive_cooldown: float = 2.4
 
 @export var projectile_scene: PackedScene
 @export var gas_zone_scene: PackedScene
@@ -74,7 +86,9 @@ enum State { PATROL, CHASE, LOOK }
 @export var cone_edge_color: Color = Color(1.0, 0.2, 0.9, 0.45)
 
 @onready var _nav: NavigationAgent2D = $NavigationAgent2D
-@onready var _anim: AnimatedSprite2D = $AnimatedSprite2D3
+## Horizontal mirroring is applied here so the axis matches the collision (not textures via flip_h).
+@onready var _facing_pivot: Node2D = $SpritePivot
+@onready var _anim: AnimatedSprite2D = $SpritePivot/AnimatedSprite2D3
 @onready var _indicator: Label = get_node_or_null("StateIndicator") as Label
 
 var state: State = State.PATROL
@@ -104,6 +118,8 @@ var _melee_cd: float = 0.0
 var _gas_cd: float = 0.0
 var _ranged_cd: float = 0.0
 var _attack_lock: float = 0.0
+var _ranged_anim_left: float = 0.0
+var _melee_anim_left: float = 0.0
 
 var _chase_repath_timer: float = 0.0
 @export var chase_repath_interval: float = 0.18
@@ -170,12 +186,8 @@ func _physics_process(delta: float) -> void:
 		_update_animation()
 		return
 
-	if _update_combat_state():
-		velocity = Vector2.ZERO
-		move_and_slide()
-		_stuck_frames = 0
-		_update_animation()
-		return
+	# Combat actions should not freeze movement (except when _attack_lock is active).
+	_update_combat_state()
 
 	_apply_movement(delta)
 	move_and_slide()
@@ -188,6 +200,8 @@ func _tick_cooldowns(delta: float) -> void:
 	_gas_cd = maxf(0.0, _gas_cd - delta)
 	_ranged_cd = maxf(0.0, _ranged_cd - delta)
 	_melee_boost_left = maxf(0.0, _melee_boost_left - delta)
+	_ranged_anim_left = maxf(0.0, _ranged_anim_left - delta)
+	_melee_anim_left = maxf(0.0, _melee_anim_left - delta)
 	_search_left = maxf(0.0, _search_left - delta)
 	_aggro_hold_left = maxf(0.0, _aggro_hold_left - delta)
 	_ally_alert_cd = maxf(0.0, _ally_alert_cd - delta)
@@ -296,11 +310,15 @@ func _can_see_player() -> bool:
 		return false
 	return hit.collider == player
 
+
+func _slash_trigger_radius() -> float:
+	return minf(maxf(4.0, melee_slash_trigger_distance), maxf(melee_adjacent, melee_range))
+
+
 func _draw() -> void:
 	if not debug_draw_cone:
 		return
 	var gscale := maxf(global_transform.get_scale().x, 0.001)
-	var draw_sight := _current_sight_distance() / gscale
 	var draw_alert := _current_alert_radius() / gscale
 
 	var fwd := _facing
@@ -308,16 +326,38 @@ func _draw() -> void:
 		fwd = Vector2.RIGHT
 	var half := deg_to_rad(sight_half_angle_deg)
 	var dir_angle := fwd.angle()
-	var steps := 28
+	var steps := 32
+	var world_sight := _current_sight_distance()
+	var space := get_world_2d().direct_space_state
 	var pts: PackedVector2Array = PackedVector2Array()
 	pts.append(Vector2.ZERO)
+	var outline: PackedVector2Array = PackedVector2Array()
 	for i in range(steps + 1):
 		var t := float(i) / float(steps)
 		var a := dir_angle - half + (2.0 * half * t)
-		pts.append(Vector2(cos(a), sin(a)) * draw_sight)
+		var dir_w := Vector2(cos(a), sin(a))
+		var ray_end := global_position + dir_w * world_sight
+		var q := PhysicsRayQueryParameters2D.create(global_position, ray_end)
+		q.exclude = [self]
+		q.collision_mask = OBSTACLE_MASK
+		var hit := space.intersect_ray(q)
+		var dist_w := world_sight
+		if not hit.is_empty():
+			dist_w = global_position.distance_to(hit.position)
+		var end_global := global_position + dir_w * dist_w
+		var end_local := to_local(end_global)
+		pts.append(end_local)
+		outline.append(end_local)
 	draw_colored_polygon(pts, cone_color)
-	draw_arc(Vector2.ZERO, draw_sight, dir_angle - half, dir_angle + half, 48, cone_edge_color, 2.0, true)
+	if outline.size() >= 2:
+		draw_polyline(outline, cone_edge_color, 2.0)
 	draw_arc(Vector2.ZERO, draw_alert, 0.0, TAU, 32, Color(1.0, 0.6, 0.1, 0.5), 1.5, true)
+
+
+func _gas_only_offense_mode() -> bool:
+	return GameManager.is_attack_enabled(&"Gas") \
+		and not GameManager.is_attack_enabled(&"Slash") \
+		and not GameManager.is_attack_enabled(&"Distance")
 
 
 func _update_combat_state() -> bool:
@@ -331,16 +371,28 @@ func _update_combat_state() -> bool:
 	var dist := global_position.distance_to(player.global_position)
 	_refresh_facing_from_intent(player.global_position - global_position)
 
-	if dist <= maxf(melee_adjacent, melee_range) and _melee_cd <= 0.0:
+	var melee_enabled: bool = GameManager.is_attack_enabled(&"Slash")
+	var slash_trigger := _slash_trigger_radius()
+
+	if melee_enabled and dist <= slash_trigger and _melee_cd <= 0.0:
 		_do_melee()
 		return true
 
-	if dist > close_attack_radius and dist <= far_attack_radius:
-		if _ranged_cd <= 0.0 and projectile_scene != null:
+	# If melee is disabled, allow ranged even at close range and shoot a bit more often.
+	var allow_ranged_now: bool = dist <= far_attack_radius and (melee_enabled == false or dist > close_attack_radius)
+	if allow_ranged_now:
+		if _ranged_cd <= 0.0 and projectile_scene != null and GameManager.is_attack_enabled(&"Distance"):
 			var target_pos := player.global_position if _sees_player else _last_known_player_pos
 			if target_pos != Vector2.ZERO and _ranged_los_ok_to(target_pos):
 				_do_ranged_toward(target_pos)
 				return true
+
+	# Only gas left: drop clouds on the player often while in range.
+	if _gas_only_offense_mode() and _gas_cd <= 0.0 and gas_zone_scene != null:
+		var gas_target := player.global_position if _sees_player else _last_known_player_pos
+		if gas_target != Vector2.ZERO and dist <= gas_offensive_cast_range:
+			_spawn_combat_gas_at(gas_target)
+			return true
 
 	return false
 
@@ -358,6 +410,9 @@ func _apply_movement(delta: float) -> void:
 			var chase_target := _get_chase_target()
 			var dist := global_position.distance_to(chase_target)
 			var spd := chase_speed_aggro
+			# Slow kiting only matters when projectiles are still available.
+			if not GameManager.is_attack_enabled(&"Slash") and GameManager.is_attack_enabled(&"Distance"):
+				spd *= chase_speed_multiplier_when_no_melee
 			if _melee_boost_left > 0.0:
 				spd = melee_boost_speed
 			elif dist <= close_attack_radius:
@@ -396,6 +451,18 @@ func _apply_movement(delta: float) -> void:
 
 func _get_chase_target() -> Vector2:
 	if player != null and is_instance_valid(player):
+		# If melee is disabled but ranged still works, keep distance for projectiles.
+		if not GameManager.is_attack_enabled(&"Slash") and GameManager.is_attack_enabled(&"Distance"):
+			var to_me := global_position - player.global_position
+			if to_me.length_squared() > 0.0001:
+				var d := to_me.length()
+				var dir := to_me / d
+				# Too close -> move away.
+				if d < ranged_keepaway_distance_when_no_melee:
+					return global_position + dir * (ranged_keepaway_distance_when_no_melee - d + 40.0)
+				# Too far -> approach but stop at preferred distance.
+				if d > ranged_preferred_distance_when_no_melee:
+					return player.global_position + dir * ranged_preferred_distance_when_no_melee
 		if _sees_player:
 			return player.global_position
 		if _has_aggro and _last_seen_player_left <= chase_tracking_grace_time and (_in_cone or _in_see_area):
@@ -507,9 +574,12 @@ func _update_patrol(delta: float) -> void:
 
 	if _patrol_wait_left <= 0.0:
 		_patrol_wait_left = randf_range(patrol_wait_min, patrol_wait_max)
-		if randf() < gas_patrol_chance and _gas_cd <= 0.0 and gas_zone_scene != null:
+		var patrol_gas_roll := gas_patrol_chance
+		if _gas_only_offense_mode():
+			patrol_gas_roll = minf(0.5, gas_patrol_chance * 5.0)
+		if randf() < patrol_gas_roll and _gas_cd <= 0.0 and gas_zone_scene != null:
 			_spawn_patrol_gas()
-			_gas_cd = gas_cooldown
+			_gas_cd = gas_offensive_cooldown if _gas_only_offense_mode() else gas_cooldown
 	else:
 		_patrol_wait_left -= delta
 		if _patrol_wait_left <= 0.0:
@@ -627,12 +697,15 @@ func _ranged_los_ok_to(target_pos: Vector2) -> bool:
 
 func _do_melee() -> void:
 	_melee_cd = melee_cooldown
-	_attack_lock = 0.25
 	_melee_boost_left = melee_boost_time
 	if player:
 		_refresh_facing_from_intent(player.global_position - global_position)
-	if _anim.sprite_frames and _anim.sprite_frames.has_animation("attackL"):
-		_anim.play("attackL")
+	var anim_name := _resolve_enemy_anim("Slash")
+	if _anim.sprite_frames and _anim.sprite_frames.has_animation(anim_name):
+		_melee_anim_left = maxf(0.25, _anim_frame_duration(anim_name))
+		_anim.play(anim_name)
+	else:
+		_melee_anim_left = 0.25
 	_spawn_melee_hitbox()
 
 
@@ -668,11 +741,19 @@ func _spawn_melee_hitbox() -> void:
 
 
 func _do_ranged_toward(target_pos: Vector2) -> void:
-	_ranged_cd = ranged_cooldown
-	_attack_lock = 0.15
+	var cd := ranged_cooldown
+	if not GameManager.is_attack_enabled(&"Slash"):
+		cd *= ranged_cooldown_multiplier_when_no_melee
+	_ranged_cd = cd
 
 	if player:
 		_refresh_facing_from_intent(target_pos - global_position)
+
+	# Play the Distance animation but DO NOT lock movement.
+	var anim_name := _resolve_enemy_anim("Distance")
+	if _anim.sprite_frames and _anim.sprite_frames.has_animation(anim_name):
+		_ranged_anim_left = maxf(0.15, _anim_frame_duration(anim_name))
+		_anim.play(anim_name)
 
 	var proj := projectile_scene.instantiate()
 	var dir := (target_pos - global_position).normalized()
@@ -687,7 +768,14 @@ func _do_ranged_toward(target_pos: Vector2) -> void:
 func _spawn_patrol_gas() -> void:
 	if gas_zone_scene == null or _waypoints.is_empty():
 		return
-	_attack_lock = 0.2
+	if not GameManager.is_attack_enabled(&"Gas"):
+		return
+	var anim_name := _resolve_enemy_anim("Gas")
+	if _anim.sprite_frames and _anim.sprite_frames.has_animation(anim_name):
+		_attack_lock = maxf(0.2, _anim_frame_duration(anim_name))
+		_anim.play(anim_name)
+	else:
+		_attack_lock = 0.2
 	var gas := gas_zone_scene.instantiate()
 	gas.global_position = _waypoints[_patrol_index].global_position
 	if gas.has_method("configure"):
@@ -695,26 +783,95 @@ func _spawn_patrol_gas() -> void:
 	get_tree().current_scene.add_child(gas)
 
 
+func _spawn_combat_gas_at(world_pos: Vector2) -> void:
+	if gas_zone_scene == null:
+		return
+	if not GameManager.is_attack_enabled(&"Gas"):
+		return
+	var anim_name := _resolve_enemy_anim("Gas")
+	if _anim.sprite_frames and _anim.sprite_frames.has_animation(anim_name):
+		_attack_lock = maxf(0.2, _anim_frame_duration(anim_name))
+		_anim.play(anim_name)
+	else:
+		_attack_lock = 0.2
+	var gas := gas_zone_scene.instantiate()
+	gas.global_position = world_pos
+	if gas.has_method("configure"):
+		gas.call("configure", gas_duration, gas_combat_radius)
+	get_tree().current_scene.add_child(gas)
+	_gas_cd = gas_offensive_cooldown
+
+
+func _apply_sprite_facing_left(flip_left: bool) -> void:
+	_facing_pivot.scale.x = -1.0 if flip_left else 1.0
+	_anim.flip_h = false
+
+
+func _anim_frame_duration(anim_name: StringName) -> float:
+	var sf := _anim.sprite_frames
+	if sf == null or not sf.has_animation(anim_name):
+		return 0.25
+	var total := 0.0
+	for i in range(sf.get_frame_count(anim_name)):
+		total += sf.get_frame_duration(anim_name, i)
+	return maxf(0.08, total)
+
+
+## Monster_anim does not include every theoretical suffix; fall back to Default / Alles.
+func _resolve_enemy_anim(prefix: String) -> StringName:
+	var sf := _anim.sprite_frames
+	if sf == null:
+		return &""
+	var want: StringName = GameManager.get_enemy_animation_name(prefix)
+	if sf.has_animation(want):
+		return want
+	for fb in [prefix + "_Default", prefix + "_Alles"]:
+		var sn := StringName(fb)
+		if sf.has_animation(sn):
+			return sn
+	return want
+
+
 func _update_animation() -> void:
-	if _attack_lock > 0.0 and _anim.animation == "attackL":
-		return
-	if velocity.length_squared() < 4.0:
-		if _anim.sprite_frames and _anim.sprite_frames.has_animation("Idle"):
-			_anim.play("Idle")
-		return
 	if not _anim.sprite_frames:
 		return
-	if absf(velocity.y) > absf(velocity.x):
-		if _anim.sprite_frames.has_animation("walkU"):
-			_anim.play("walkU")
-			_anim.flip_h = false
-		elif _anim.sprite_frames.has_animation("walkD"):
-			_anim.play("walkD")
-			_anim.flip_h = false
-	else:
-		if _anim.sprite_frames.has_animation("walkD"):
-			_anim.play("walkD")
-			_anim.flip_h = velocity.x < 0.0
+
+	# While melee/gas lock is active, keep current clip.
+	if _attack_lock > 0.0:
+		_apply_sprite_facing_left(_facing.x < 0.0)
+		return
+
+	# Slash only while actually in melee range; otherwise always fall through to Walk.
+	if _melee_anim_left > 0.0:
+		var in_slash_range := false
+		if player != null and is_instance_valid(player):
+			in_slash_range = global_position.distance_to(player.global_position) <= _slash_trigger_radius()
+		if not in_slash_range:
+			_melee_anim_left = 0.0
+	if _melee_anim_left > 0.0:
+		var slash_name := _resolve_enemy_anim("Slash")
+		if _anim.sprite_frames.has_animation(slash_name):
+			if String(_anim.animation) != String(slash_name) or not _anim.is_playing():
+				_anim.play(slash_name)
+		_apply_sprite_facing_left(_facing.x < 0.0)
+		return
+
+	# Ranged override (walk while shooting): show Distance clip for a short time, but don't lock movement.
+	if _ranged_anim_left > 0.0:
+		var dist_name := _resolve_enemy_anim("Distance")
+		if _anim.sprite_frames.has_animation(dist_name):
+			if String(_anim.animation) != String(dist_name) or not _anim.is_playing():
+				_anim.play(dist_name)
+		_apply_sprite_facing_left(_facing.x < 0.0)
+		return
+
+	var walk_name := _resolve_enemy_anim("Walk")
+	if _anim.sprite_frames.has_animation(walk_name):
+		if String(_anim.animation) != String(walk_name) or not _anim.is_playing():
+			_anim.play(walk_name)
+		if velocity.length_squared() < 4.0 and _anim.is_playing():
+			_anim.stop()
+	_apply_sprite_facing_left((velocity.x if velocity.length_squared() >= 4.0 else _facing.x) < 0.0)
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:

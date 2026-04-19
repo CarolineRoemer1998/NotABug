@@ -10,8 +10,8 @@ const ITEM : PackedScene = preload("res://components/items/item.tscn")
 
 var item_data : ItemData
 
-static func get_new_item(_item_data: ItemData):
-	var new_item = ITEM.instantiate()
+static func get_new_item(_item_data: ItemData) -> Item:
+	var new_item := ITEM.instantiate() as Item
 	new_item.item_data = _item_data
 	return new_item
 
@@ -27,3 +27,5 @@ func handle_item_collected(_item: Item):
 func set_data():
 	name = item_data.item_name
 	sprite_2d_as_collectable_item.sprite_frames = item_data.item_texture
+	if item_data.wearable_texture != null:
+		sprite_2d_as_worn_by_enemy.texture = item_data.wearable_texture

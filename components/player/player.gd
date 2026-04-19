@@ -25,6 +25,7 @@ var dash_direction := Vector2.ZERO
 @export var damage_iframe_seconds: float = 0.35
 var _damage_iframe_left: float = 0.0
 var _life: int = 0
+var _dead: bool = false
 var current_animation : String = ""
 
 func _ready() -> void:
@@ -35,9 +36,19 @@ func _ready() -> void:
 		life_meter.max_value = max_life
 		life_meter.value = max_life
 
+
+func bind_life_meter(meter: ProgressBar) -> void:
+	life_meter = meter
+	if life_meter != null:
+		life_meter.max_value = max_life
+		life_meter.value = float(_life)
+
 func _process(delta: float) -> void:
 	if GameManager.current_game_state == GameManager.STATE.Playing:
 		_damage_iframe_left = maxf(0.0, _damage_iframe_left - delta)
+	if GameManager.current_game_state == GameManager.STATE.Lost \
+			or GameManager.current_game_state == GameManager.STATE.Won:
+		return
 	handle_movement()
 	handle_action_input()
 
@@ -79,6 +90,8 @@ func _on_timer_dash_duration_timeout() -> void:
 	current_speed = speed_normal
 
 func take_damage(amount: int) -> void:
+	if _dead:
+		return
 	if amount <= 0:
 		return
 	if _damage_iframe_left > 0.0:
@@ -93,9 +106,41 @@ func take_damage(amount: int) -> void:
 		life_meter.value = float(_life)
 
 	if _life <= 0:
-		queue_free()
+		_life = 0
+		_dead = true
+		_die()
+
+
+func _die() -> void:
+	GameManager.current_game_state = GameManager.STATE.Lost
+	Signals.player_died.emit()
+	collision_layer = 0
+	collision_mask = 0
+	if has_node("ItemDetector"):
+		var idet := $ItemDetector as Area2D
+		if idet:
+			idet.set_deferred(&"monitoring", false)
+			idet.set_deferred(&"monitorable", false)
+	velocity = Vector2.ZERO
+	is_dashing = false
+	current_speed = speed_normal
 
 
 func _on_item_detector_body_entered(item: Item) -> void:
+	if item == null or not is_instance_valid(item):
+		return
+	# Prevent re-trigger loops when an item respawns under the player.
+	if item.get_meta("collected", false):
+		return
+	item.set_meta("collected", true)
+
+	# Disable collision immediately so we can't collect it again.
+	item.collision_layer = 0
+	item.collision_mask = 0
+	if item.has_node("CollisionShape2D"):
+		var cs := item.get_node("CollisionShape2D") as CollisionShape2D
+		if cs:
+			cs.disabled = true
+
 	GameManager.reduce_fear(item)
-	
+	item.call_deferred("queue_free")

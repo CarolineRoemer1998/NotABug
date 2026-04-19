@@ -6,9 +6,10 @@
 
 [resource]
 script = ExtResource("2_djnf1")
-item_name = "Pie"
+item_name = "Trompete"
 type = 1
 fear_reduction = 30.0
 item_texture = ExtResource("1_o5x7t")
 wearable_texture = ExtResource("3_jdyka")
+cosmetic_tag = &"Trompete"
 metadata/_custom_type_script = "uid://dtxdvlwyjt21l"

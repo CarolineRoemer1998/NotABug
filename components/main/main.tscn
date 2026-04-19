@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vrcjw3jy2tvt"]
 
-[ext_resource type="Script" path="res://components/main/main.gd" id="1_4k17i"]
+[ext_resource type="Script" uid="uid://1hxp663br1o0" path="res://components/main/main.gd" id="1_4k17i"]
 [ext_resource type="PackedScene" uid="uid://bhyxdb3jxn2cx" path="res://components/player/player.tscn" id="1_63q0e"]
 [ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="2_wfiak"]
 [ext_resource type="Resource" uid="uid://cs8tqveeast2x" path="res://components/items/Variants/Hat.tres" id="3_fxrab"]
@@ -10,11 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c47mkfnkbce34" path="res://enemy.tscn" id="6_lnf1j"]
 [ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
-[ext_resource type="SpriteFrames" uid="uid://drrfuhvwcu2xj" path="res://art/Monster_nahangriff.tres" id="8_jj6qt"]
-[ext_resource type="PackedScene" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
-[ext_resource type="SpriteFrames" uid="uid://dwpkke80i1t6a" path="res://art/Monster_fernangriff.tres" id="9_hwayo"]
+[ext_resource type="PackedScene" uid="uid://b33sjjgwdkdag" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://cbakbui3jksif" path="res://components/ui/TutorialScreen.tscn" id="9_ymw2v"]
-[ext_resource type="SpriteFrames" uid="uid://dh0f21rlw6l2a" path="res://art/Monster_walkcycles.tres" id="10_lh2ai"]
 [ext_resource type="PackedScene" uid="uid://cv5jetcx63f42" path="res://components/environment/Fog.tscn" id="13_jj6qt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
@@ -69,31 +66,8 @@ far_attack_radius = 100.0
 melee_adjacent = 5.0
 melee_damage = 5
 melee_range = 30.0
-gas_duration = 50.0
-gas_patrol_radius = 70.0
-gas_combat_radius = 38.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=878995692]
-position = Vector2(3.9999924, -13.999989)
-scale = Vector2(0.16183573, 0.16183574)
-sprite_frames = ExtResource("8_jj6qt")
-animation = &"schuhe"
-frame_progress = 0.56551063
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=971788600]
-visible = false
-position = Vector2(3.9999924, -13.999989)
-scale = Vector2(0.16183573, 0.16183574)
-sprite_frames = ExtResource("9_hwayo")
-animation = &"Alles"
-frame_progress = 0.36092696
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Game/Enemy" unique_id=1965788097]
-visible = false
-position = Vector2(3.9999924, -13.999989)
-scale = Vector2(0.16183573, 0.16183574)
-sprite_frames = ExtResource("9_hwayo")
-animation = &"Handschuhe"
+gas_patrol_radius = 60.0
+gas_combat_radius = 42.0
 
 [node name="Enemy3" parent="Game" unique_id=1413421460 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(125, 395)
@@ -118,16 +92,8 @@ far_attack_radius = 100.0
 melee_adjacent = 5.0
 melee_damage = 5
 melee_range = 30.0
-gas_duration = 50.0
-gas_patrol_radius = 70.0
-gas_combat_radius = 38.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy3" unique_id=1532245076]
-position = Vector2(3.9999924, -13.999989)
-scale = Vector2(0.16183573, 0.16183574)
-sprite_frames = ExtResource("10_lh2ai")
-animation = &"schuhe"
-frame_progress = 0.36001068
+gas_patrol_radius = 60.0
+gas_combat_radius = 42.0
 
 [node name="Enemy2" parent="Game" unique_id=1447438685 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(505, 425)
@@ -152,16 +118,8 @@ far_attack_radius = 100.0
 melee_adjacent = 5.0
 melee_damage = 5
 melee_range = 30.0
-gas_duration = 50.0
-gas_patrol_radius = 70.0
-gas_combat_radius = 38.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Enemy2" unique_id=734239517]
-position = Vector2(3.9999924, -13.999989)
-scale = Vector2(0.16183573, 0.16183574)
-sprite_frames = ExtResource("9_hwayo")
-animation = &"schuhe"
-frame_progress = 0.021531722
+gas_patrol_radius = 60.0
+gas_combat_radius = 42.0
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
@@ -170,7 +128,7 @@ frame_progress = 0.021531722
 [node name="ItemSpawnPositions" type="Node2D" parent="Game" unique_id=153864833]
 
 [node name="Spawn1" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1160575753]
-position = Vector2(158, 139)
+position = Vector2(369, 257)
 
 [node name="Spawn2" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=914005108]
 position = Vector2(520, 96)
@@ -216,12 +174,86 @@ offset_right = 33.0
 offset_bottom = 91.0
 
 [node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
+visible = false
+z_index = 200
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/WinScreen" unique_id=1883836814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ColorRect" type="ColorRect" parent="UI/WinScreen/MarginContainer" unique_id=1883836815]
+layout_mode = 2
+color = Color(0.05, 0.12, 0.08, 0.88)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/WinScreen/MarginContainer/ColorRect" unique_id=1883836816]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]You win — fear is gone!
+
+[font_size=10]Tab — play again   ·   Esc — quit[/font_size][/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LoseScreen" type="Control" parent="UI" unique_id=753610665]
+visible = false
+z_index = 200
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/LoseScreen" unique_id=753610666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="ColorRect" type="ColorRect" parent="UI/LoseScreen/MarginContainer" unique_id=753610667]
+layout_mode = 2
+color = Color(0.08, 0.02, 0.02, 0.88)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/LoseScreen/MarginContainer/ColorRect" unique_id=753610668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Game over
+
+[font_size=10]Tab — try again   ·   Esc — quit[/font_size][/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
 layout_mode = 3

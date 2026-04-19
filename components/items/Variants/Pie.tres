@@ -6,9 +6,10 @@
 
 [resource]
 script = ExtResource("2_55cjm")
-item_name = "Bubbles"
+item_name = "Handschuhe"
 type = 2
 fear_reduction = 30.0
 item_texture = ExtResource("1_yturm")
 wearable_texture = ExtResource("3_fbw3f")
+cosmetic_tag = &"Handschuhe"
 metadata/_custom_type_script = "uid://dtxdvlwyjt21l"
