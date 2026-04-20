@@ -64,7 +64,6 @@ func _process(delta: float) -> void:
 
 func handle_movement():
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	print(input_direction)
 	if input_direction != Vector2.ZERO:
 		dash_direction = input_direction
 	if is_dashing:

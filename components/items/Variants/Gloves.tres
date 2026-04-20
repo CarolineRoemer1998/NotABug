@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dlv60v3udyjmc"]
 
-[ext_resource type="SpriteFrames" uid="uid://dm5glovesfloat1" path="res://components/items/SpriteFrames/ItemGloves.tres" id="1_gloves_sf"]
+[ext_resource type="SpriteFrames" uid="uid://cuko3efy6gbho" path="res://components/items/SpriteFrames/ItemGloves.tres" id="1_gloves_sf"]
 [ext_resource type="Script" uid="uid://dtxdvlwyjt21l" path="res://components/items/ItemData.gd" id="1_itemdata"]
 [ext_resource type="Texture2D" uid="uid://c30ckt87y4qoe" path="res://art/projectile.png" id="1_nhcal"]
 
@@ -8,7 +8,7 @@
 script = ExtResource("1_itemdata")
 item_name = "Gloves"
 type = 5
-fear_reduction = 15.0
+fear_reduction = 35.0
 item_texture = ExtResource("1_gloves_sf")
 wearable_texture = ExtResource("1_nhcal")
 cosmetic_tag = &"Handschuhe"

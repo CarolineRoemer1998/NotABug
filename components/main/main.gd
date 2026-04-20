@@ -26,7 +26,7 @@ func _ready() -> void:
 	spawn_items()
 	var p := $Game/Player2 as Player
 	if p:
-		p.bind_life_meter($UI/HUD/HealthMeter as ProgressBar)
+		p.bind_life_meter($UI2/HUD/HealthMeter as ProgressBar)
 	if not Signals.player_died.is_connected(_on_player_died):
 		Signals.player_died.connect(_on_player_died)
 	if not Signals.game_won.is_connected(_on_game_won):

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dx06he1lbi1w8" path="res://components/ui/FearMeter.gd" id="1_ah75i"]
 [ext_resource type="Theme" uid="uid://d36yfu0ple8dp" path="res://fonts&themes/progressbar-label-theme.tres" id="2_u5gms"]
 [ext_resource type="Shader" uid="uid://cc7k35411pte" path="res://shaders/glitch_shader.gdshader" id="3_inr1r"]
-[ext_resource type="PackedScene" uid="uid://chs8g8dsb8ggb" path="res://scenes/glitch_overlay.tscn" id="3_rvpev"]
+[ext_resource type="PackedScene" path="res://scenes/glitch_overlay.tscn" id="3_rvpev"]
 
 [sub_resource type="Theme" id="Theme_u5gms"]
 

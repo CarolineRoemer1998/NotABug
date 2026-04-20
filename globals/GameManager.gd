@@ -51,7 +51,6 @@ func _ready() -> void:
 
 func handle_item_collected(item: Item) -> void:
 	collected_items.append(item)
-	print(collected_items)
 	_register_cosmetic_from_item(item)
 
 

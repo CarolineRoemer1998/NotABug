@@ -32,3 +32,5 @@ func reset_glitch_shader():
 	mat.set_shader_parameter("shake_speed", 0.001)
 	mat.set_shader_parameter("shake_block_size", 0.001)
 	mat.set_shader_parameter("shake_color_rate", shake_color_rate)
+	var fill_style := get_theme_stylebox("fill") as StyleBoxFlat
+	fill_style.bg_color += Color(-0.05, 0.1, 0.03)

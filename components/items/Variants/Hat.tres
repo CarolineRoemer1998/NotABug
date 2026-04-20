@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_npvuh")
 item_name = "Brille"
-fear_reduction = 60.0
+fear_reduction = 35.0
 item_texture = ExtResource("1_caccj")
 wearable_texture = ExtResource("1_t7vn7")
 cosmetic_tag = &"Brille"
