@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NotABug"
-run/main_scene="uid://vrcjw3jy2tvt"
+run/main_scene="uid://dwdinpc4mdy25"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

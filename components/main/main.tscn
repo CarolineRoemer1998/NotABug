@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
 [ext_resource type="PackedScene" uid="uid://c47mkfnkbce34" path="res://enemy.tscn" id="6_lnf1j"]
 [ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
-[ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
+[ext_resource type="PackedScene" uid="uid://cec62wwecxh2j" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://ffkd3i7mqvtv" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://cv5jetcx63f42" path="res://components/environment/Fog.tscn" id="13_jj6qt"]
-[ext_resource type="Script" uid="uid://dlw0vxp11scki" path="res://components/ui/EndScreen.gd" id="14_endscr"]
+[ext_resource type="Script" path="res://components/ui/EndScreen.gd" id="14_endscr"]
 [ext_resource type="FontFile" uid="uid://bvkqkdcpc5wyb" path="res://fonts&themes/j_jerami/jJerami.ttf" id="15_jerami"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
@@ -77,7 +77,7 @@ min_aggro_time = 10.0
 close_attack_radius = 30.0
 far_attack_radius = 100.0
 melee_adjacent = 5.0
-melee_damage = 5
+melee_damage = 3
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0
@@ -104,7 +104,7 @@ min_aggro_time = 10.0
 close_attack_radius = 30.0
 far_attack_radius = 100.0
 melee_adjacent = 5.0
-melee_damage = 5
+melee_damage = 3
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0
@@ -131,7 +131,7 @@ min_aggro_time = 10.0
 close_attack_radius = 30.0
 far_attack_radius = 100.0
 melee_adjacent = 5.0
-melee_damage = 5
+melee_damage = 3
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0

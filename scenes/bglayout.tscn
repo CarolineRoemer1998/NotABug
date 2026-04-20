@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bkwagqfwbb65t"]
+[gd_scene format=3 uid="uid://cec62wwecxh2j"]
 
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="1_6rgvi"]
-[ext_resource type="Script" uid="uid://sqs22j6k1l3p" path="res://scenes/Background.gd" id="1_t0c4t"]
+[ext_resource type="Script" path="res://scenes/Background.gd" id="1_t0c4t"]
 [ext_resource type="PackedScene" uid="uid://djtbniwgojuhe" path="res://scenes/Redblock.tscn" id="2_q778t"]
-[ext_resource type="PackedScene" uid="uid://chs8g8dsb8ggb" path="res://scenes/glitch_overlay.tscn" id="4_ndw6h"]
+[ext_resource type="PackedScene" path="res://scenes/glitch_overlay.tscn" id="4_ndw6h"]
 [ext_resource type="Texture2D" uid="uid://1krd5bqdgf82" path="res://art/Environment/Raumlayoutboden.png" id="5_3nrbm"]
 [ext_resource type="Texture2D" uid="uid://bn6ullv6y565i" path="res://art/Environment/Raumlayout_Wande.png" id="5_doo2m"]
 [ext_resource type="Texture2D" uid="uid://dxdvfkp2a3syl" path="res://art/Environment/Raumeinzelteile/BossBodenScary.png" id="7_dprj7"]
@@ -19,7 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://coli2ac6ssdnl" path="res://art/Environment/Raumeinzelteile/RaumlayoutSchachteingangScary.png" id="17_qploi"]
 [ext_resource type="Texture2D" uid="uid://bu1ugqexxn7ag" path="res://art/Environment/Raumeinzelteile/BossBodenNormal.png" id="17_vx43v"]
 [ext_resource type="Texture2D" uid="uid://ccx6fvd6noiq4" path="res://art/Environment/Raumeinzelteile/BuroBodenNormal.png" id="18_7ojk0"]
+[ext_resource type="Texture2D" uid="uid://cp6vn8lgxn2ir" path="res://components/environment/extras/wasserspender_scary.png" id="18_n45wg"]
 [ext_resource type="Texture2D" uid="uid://bk8alf0iul3f7" path="res://art/Environment/Raumeinzelteile/FlurBodenNormal.png" id="19_2itmx"]
+[ext_resource type="Texture2D" uid="uid://bf3qvp2ph67su" path="res://components/environment/extras/buero_scary.png" id="19_4vhn5"]
 [ext_resource type="Texture2D" uid="uid://ds52gy6s6ec8p" path="res://art/Environment/Raumeinzelteile/ServerBodenNormal.png" id="20_dv3mo"]
 [ext_resource type="Texture2D" uid="uid://6re46tykt5ws" path="res://art/Environment/Raumeinzelteile/WCBodenNormal.png" id="21_wv6x1"]
 [ext_resource type="Texture2D" uid="uid://cdrd82w6nxa2k" path="res://art/Environment/Raumeinzelteile/BossWandNormal.png" id="22_hvm0w"]
@@ -28,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://b2vwdo2s6nseb" path="res://art/Environment/Raumeinzelteile/ServerWandNormal.png" id="25_qesgl"]
 [ext_resource type="Texture2D" uid="uid://5gln5xdxcky" path="res://art/Environment/Raumeinzelteile/WCWandNormal.png" id="26_dwgn1"]
 [ext_resource type="Texture2D" uid="uid://blkqhj26fkn0s" path="res://art/Environment/Raumeinzelteile/RaumlayoutSchachteingangNormal.png" id="28_t0nmx"]
+[ext_resource type="Texture2D" uid="uid://c7lh4xf23j8pi" path="res://components/environment/extras/wasserspender_friendly.png" id="31_c6rso"]
+[ext_resource type="Texture2D" uid="uid://bnyp42fok2268" path="res://components/environment/extras/buero_friendly.png" id="32_tky56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t0nmx"]
 size = Vector2(538.5093, 50.885918)
@@ -126,7 +130,7 @@ size = Vector2(21.39199, 77.22895)
 size = Vector2(52.85093, 49.97168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpsqp"]
-size = Vector2(22.650385, 65.87176)
+size = Vector2(45.300804, 95.40045)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvm7j"]
 size = Vector2(50.334167, 47.700233)
@@ -322,6 +326,11 @@ position = Vector2(1344.0001, -166)
 scale = Vector2(3.1787522, 3.5219953)
 shape = SubResource("RectangleShape2D_jpsqp")
 
+[node name="CollisionShape2D38" type="CollisionShape2D" parent="Colliders2" unique_id=306052011]
+position = Vector2(764, 1486)
+scale = Vector2(3.1787522, 3.5219953)
+shape = SubResource("RectangleShape2D_jpsqp")
+
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="Colliders2" unique_id=614674417]
 position = Vector2(1460, -133.99998)
 scale = Vector2(3.1787522, 3.5219953)
@@ -419,6 +428,12 @@ texture = ExtResource("16_tky56")
 [node name="Sprite2D_Schacht" type="Sprite2D" parent="Visuals/ScaryComponents/Wand" unique_id=1171249071]
 texture = ExtResource("17_qploi")
 
+[node name="Sprite2D_Wasser" type="Sprite2D" parent="Visuals/ScaryComponents/Wand" unique_id=1073027161]
+texture = ExtResource("18_n45wg")
+
+[node name="Sprite2D_bueroextra" type="Sprite2D" parent="Visuals/ScaryComponents/Wand" unique_id=1895958789]
+texture = ExtResource("19_4vhn5")
+
 [node name="NormalComponents" type="Node2D" parent="Visuals" unique_id=28538368]
 
 [node name="Boden" type="Node2D" parent="Visuals/NormalComponents" unique_id=1336090077]
@@ -457,5 +472,11 @@ texture = ExtResource("26_dwgn1")
 
 [node name="Sprite2D_Schacht" type="Sprite2D" parent="Visuals/NormalComponents/Wand" unique_id=1424114936]
 texture = ExtResource("28_t0nmx")
+
+[node name="Sprite2D_Wasser" type="Sprite2D" parent="Visuals/NormalComponents/Wand" unique_id=1697378060]
+texture = ExtResource("31_c6rso")
+
+[node name="Sprite2D_bueroextra" type="Sprite2D" parent="Visuals/NormalComponents/Wand" unique_id=676741135]
+texture = ExtResource("32_tky56")
 
 [editable path="Node2d"]
