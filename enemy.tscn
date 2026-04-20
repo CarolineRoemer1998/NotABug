@@ -94,6 +94,7 @@ volume_db = -3.0
 stream = SubResource("AudioStreamWAV_iifgy")
 
 [node name="sfx_enemy_funny" type="AudioStreamPlayer2D" parent="." unique_id=1101757287]
+position = Vector2(0, -1)
 stream = SubResource("AudioStreamWAV_epg4t")
 volume_db = -10.0
 

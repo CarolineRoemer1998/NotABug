@@ -6,6 +6,35 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5p8k"]
 radius = 24.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x7n7"]
+atlas = ExtResource("2_3x7n7")
+region = Rect2(0, 0, 271, 207)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc381"]
+atlas = ExtResource("2_3x7n7")
+region = Rect2(271, 0, 271, 207)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc7u0"]
+atlas = ExtResource("2_3x7n7")
+region = Rect2(542, 0, 271, 207)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjd1h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x7n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc381")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc7u0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="GasZone" type="Area2D" unique_id=550689667]
 collision_layer = 8
 script = ExtResource("1_xv5s4")
@@ -18,65 +47,13 @@ shape = SubResource("CircleShape2D_y5p8k")
 wait_time = 0.5
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1121045732]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(77, -47)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=520296937]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(77, 15)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=674391359]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(50.999996, -17)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=714219995]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(105, -17)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1976174799]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(50, -47)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1313833778]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(102, -47)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1041755441]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(50, 15)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=202751156]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(103, 16)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D9" type="Sprite2D" parent="." unique_id=697468013]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(77, -80)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
-
-[node name="Sprite2D10" type="Sprite2D" parent="." unique_id=418485120]
-modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(78, 49)
-scale = Vector2(0.09564908, 0.3781172)
-texture = ExtResource("2_3x7n7")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1684619632]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(-1, -18)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yjd1h")
+frame_progress = 0.39139733
+speed_scale = 0.3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

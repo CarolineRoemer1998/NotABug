@@ -29,8 +29,8 @@ collision_mask = 26
 script = ExtResource("1_kfe3d")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1917120212]
-position = Vector2(0, -8)
-scale = Vector2(0.125, 0.125)
+position = Vector2(0, 1.999999)
+scale = Vector2(0.1, 0.1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals" unique_id=285574132]
 position = Vector2(0, -106.666664)

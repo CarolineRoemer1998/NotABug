@@ -7,12 +7,12 @@
 [ext_resource type="Resource" uid="uid://bywfccd17m23r" path="res://components/items/Variants/Shoes.tres" id="4_jj6qt"]
 [ext_resource type="Resource" uid="uid://conptwbmdslrp" path="res://components/items/Variants/Pie.tres" id="5_hwayo"]
 [ext_resource type="Texture2D" uid="uid://br5l2hfd5aq1i" path="res://art/Raumlayout.jpg" id="6_gjvd5"]
-[ext_resource type="PackedScene" uid="uid://wr6npsef4vte" path="res://enemy.tscn" id="6_lnf1j"]
+[ext_resource type="PackedScene" uid="uid://c47mkfnkbce34" path="res://enemy.tscn" id="6_lnf1j"]
 [ext_resource type="PackedScene" uid="uid://6yaonuhlk2ta" path="res://components/ui/FearMeter.tscn" id="7_gjvd5"]
-[ext_resource type="PackedScene" uid="uid://cec62wwecxh2j" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
+[ext_resource type="PackedScene" uid="uid://bkwagqfwbb65t" path="res://scenes/bglayout.tscn" id="7_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://ffkd3i7mqvtv" path="res://components/ui/HealthMeter.tscn" id="8_ymw2v"]
 [ext_resource type="PackedScene" uid="uid://cv5jetcx63f42" path="res://components/environment/Fog.tscn" id="13_jj6qt"]
-[ext_resource type="Script" path="res://components/ui/EndScreen.gd" id="14_endscr"]
+[ext_resource type="Script" uid="uid://dlw0vxp11scki" path="res://components/ui/EndScreen.gd" id="14_endscr"]
 [ext_resource type="FontFile" uid="uid://bvkqkdcpc5wyb" path="res://fonts&themes/j_jerami/jJerami.ttf" id="15_jerami"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_54wvq"]
@@ -33,7 +33,7 @@ format = 3
 loop_mode = 1
 
 [node name="Main" type="Node2D" unique_id=354944633 node_paths=PackedStringArray("spawn_points")]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 script = ExtResource("1_4k17i")
 spawn_points = [NodePath("Game/ItemSpawnPositions/Spawn1"), NodePath("Game/ItemSpawnPositions/Spawn2"), NodePath("Game/ItemSpawnPositions/Spawn3"), NodePath("Game/ItemSpawnPositions/Spawn4"), NodePath("Game/ItemSpawnPositions/Spawn5")]
 item_variants = Dictionary[ExtResource("2_wfiak"), bool]({
@@ -81,6 +81,7 @@ melee_damage = 5
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0
+debug_draw_cone = false
 
 [node name="Enemy3" parent="Game" unique_id=1413421460 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
 position = Vector2(125, 395)
@@ -107,9 +108,10 @@ melee_damage = 5
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0
+debug_draw_cone = false
 
 [node name="Enemy2" parent="Game" unique_id=1447438685 node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_lnf1j")]
-position = Vector2(505, 425)
+position = Vector2(506, 425)
 patrol_points = [NodePath("../ItemSpawnPositions/Spawn1"), NodePath("../ItemSpawnPositions/Spawn2"), NodePath("../ItemSpawnPositions/Spawn3"), NodePath("../ItemSpawnPositions/Spawn4"), NodePath("../ItemSpawnPositions/Spawn5")]
 patrol_speed = 38.0
 chase_speed = 62.0
@@ -133,6 +135,7 @@ melee_damage = 5
 melee_range = 30.0
 gas_patrol_radius = 60.0
 gas_combat_radius = 42.0
+debug_draw_cone = false
 
 [node name="Environment" type="Node2D" parent="Game" unique_id=2139555284]
 
@@ -153,7 +156,7 @@ position = Vector2(504, 376)
 position = Vector2(359, 426)
 
 [node name="Spawn5" type="Node2D" parent="Game/ItemSpawnPositions" unique_id=1505387688]
-position = Vector2(522, 436)
+position = Vector2(157, 141)
 
 [node name="Player2" parent="Game" unique_id=962403255 instance=ExtResource("1_63q0e")]
 position = Vector2(80, 120)
@@ -165,27 +168,113 @@ metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1468763875]
 
-[node name="HUD" type="Control" parent="UI" unique_id=222779790]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 432.0
-offset_right = 432.0
-size_flags_horizontal = 0
-
-[node name="FearMeter" parent="UI/HUD" unique_id=1216261520 instance=ExtResource("7_gjvd5")]
-layout_mode = 1
-offset_left = -32.0
-offset_top = 16.0
-offset_right = -7.0
-offset_bottom = 91.0
-
-[node name="HealthMeter" parent="UI/HUD" unique_id=643557903 instance=ExtResource("8_ymw2v")]
+[node name="LoseScreen" type="Control" parent="UI" unique_id=753610665]
 visible = false
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_endscr")
+
+[node name="Dim" type="ColorRect" parent="UI/LoseScreen" unique_id=-1053827922]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 33.0
-offset_bottom = 91.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.01, 0, 0.52)
+
+[node name="Content" type="MarginContainer" parent="UI/LoseScreen" unique_id=753610666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 88
+theme_override_constants/margin_right = 56
+theme_override_constants/margin_bottom = 56
+
+[node name="VBox" type="VBoxContainer" parent="UI/LoseScreen/Content" unique_id=753610669]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TitleTopPad" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610670]
+layout_mode = 2
+
+[node name="TitleRow" type="HBoxContainer" parent="UI/LoseScreen/Content/VBox" unique_id=753610671]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TitleLeftPad" type="Control" parent="UI/LoseScreen/Content/VBox/TitleRow" unique_id=753610672]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/LoseScreen/Content/VBox/TitleRow" unique_id=753610673]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.9, 0.82, 0.72, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.06, 0.04, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("15_jerami")
+theme_override_font_sizes/font_size = 88
+text = "Game over"
+
+[node name="TitleSpacer" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610674]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="UI/LoseScreen/Content/VBox" unique_id=753610675]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
+theme_override_fonts/font = ExtResource("15_jerami")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
+text = "Try again"
+
+[node name="BtnSep" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610676]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="UI/LoseScreen/Content/VBox" unique_id=753610677]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
+theme_override_fonts/font = ExtResource("15_jerami")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
+text = "Quit"
+
+[node name="HintSep" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610679]
+visible = false
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="UI/LoseScreen/Content/VBox" unique_id=753610678]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.65, 0.58, 0.52, 0.95)
+theme_override_fonts/font = ExtResource("15_jerami")
+theme_override_font_sizes/font_size = 14
+text = "Tab — try again   ·   Esc — quit"
 
 [node name="WinScreen" type="Control" parent="UI" unique_id=1883836813]
 visible = false
@@ -297,113 +386,27 @@ theme_override_fonts/font = ExtResource("15_jerami")
 theme_override_font_sizes/font_size = 14
 text = "Tab — play again   ·   Esc — quit"
 
-[node name="LoseScreen" type="Control" parent="UI" unique_id=753610665]
-visible = false
-z_index = 200
+[node name="HUD" type="Control" parent="UI" unique_id=222779790]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_endscr")
+anchors_preset = 0
+offset_left = 432.0
+offset_right = 432.0
+size_flags_horizontal = 0
 
-[node name="Dim" type="ColorRect" parent="UI/LoseScreen" unique_id=-1053827922]
+[node name="FearMeter" parent="UI/HUD" unique_id=1216261520 instance=ExtResource("7_gjvd5")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.02, 0.01, 0, 0.52)
+offset_left = -32.0
+offset_top = 16.0
+offset_right = -7.0
+offset_bottom = 91.0
 
-[node name="Content" type="MarginContainer" parent="UI/LoseScreen" unique_id=753610666]
+[node name="HealthMeter" parent="UI/HUD" unique_id=643557903 instance=ExtResource("8_ymw2v")]
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-theme_override_constants/margin_left = 56
-theme_override_constants/margin_top = 88
-theme_override_constants/margin_right = 56
-theme_override_constants/margin_bottom = 56
-
-[node name="VBox" type="VBoxContainer" parent="UI/LoseScreen/Content" unique_id=753610669]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="TitleTopPad" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610670]
-layout_mode = 2
-
-[node name="TitleRow" type="HBoxContainer" parent="UI/LoseScreen/Content/VBox" unique_id=753610671]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TitleLeftPad" type="Control" parent="UI/LoseScreen/Content/VBox/TitleRow" unique_id=753610672]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="UI/LoseScreen/Content/VBox/TitleRow" unique_id=753610673]
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 0
-theme_override_colors/font_color = Color(0.9, 0.82, 0.72, 1)
-theme_override_colors/font_outline_color = Color(0.1, 0.06, 0.04, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 88
-text = "Game over"
-
-[node name="TitleSpacer" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610674]
-custom_minimum_size = Vector2(0, 52)
-layout_mode = 2
-
-[node name="RetryButton" type="Button" parent="UI/LoseScreen/Content/VBox" unique_id=753610675]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Try again"
-
-[node name="BtnSep" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610676]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="QuitButton" type="Button" parent="UI/LoseScreen/Content/VBox" unique_id=753610677]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Quit"
-
-[node name="HintSep" type="Control" parent="UI/LoseScreen/Content/VBox" unique_id=753610679]
-visible = false
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-
-[node name="Hint" type="Label" parent="UI/LoseScreen/Content/VBox" unique_id=753610678]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.65, 0.58, 0.52, 0.95)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 14
-text = "Tab — try again   ·   Esc — quit"
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 33.0
+offset_bottom = 91.0
 
 [node name="DevUI" type="Control" parent="UI" unique_id=2020869848]
 layout_mode = 3
@@ -460,254 +463,6 @@ offset_top = 16.0
 offset_right = 33.0
 offset_bottom = 91.0
 
-[node name="WinScreen" type="Control" parent="UI2" unique_id=73496038]
-visible = false
-z_index = 200
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_endscr")
-headline = "You win!"
-retry_label = "Play again"
-
-[node name="Dim" type="ColorRect" parent="UI2/WinScreen" unique_id=1169250501]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.02, 0.01, 0, 0.52)
-
-[node name="Content" type="MarginContainer" parent="UI2/WinScreen" unique_id=500360611]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-theme_override_constants/margin_left = 56
-theme_override_constants/margin_top = 88
-theme_override_constants/margin_right = 56
-theme_override_constants/margin_bottom = 56
-
-[node name="VBox" type="VBoxContainer" parent="UI2/WinScreen/Content" unique_id=820752635]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="TitleTopPad" type="Control" parent="UI2/WinScreen/Content/VBox" unique_id=172208813]
-layout_mode = 2
-
-[node name="TitleRow" type="HBoxContainer" parent="UI2/WinScreen/Content/VBox" unique_id=1567121359]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TitleLeftPad" type="Control" parent="UI2/WinScreen/Content/VBox/TitleRow" unique_id=682222651]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="UI2/WinScreen/Content/VBox/TitleRow" unique_id=909970702]
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 0
-theme_override_colors/font_color = Color(0.9, 0.82, 0.72, 1)
-theme_override_colors/font_outline_color = Color(0.1, 0.06, 0.04, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 88
-text = "You win!"
-
-[node name="TitleSpacer" type="Control" parent="UI2/WinScreen/Content/VBox" unique_id=2132897831]
-custom_minimum_size = Vector2(0, 52)
-layout_mode = 2
-
-[node name="RetryButton" type="Button" parent="UI2/WinScreen/Content/VBox" unique_id=565897270]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Play again"
-
-[node name="BtnSep" type="Control" parent="UI2/WinScreen/Content/VBox" unique_id=454813868]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="QuitButton" type="Button" parent="UI2/WinScreen/Content/VBox" unique_id=1370730987]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Quit"
-
-[node name="HintSep" type="Control" parent="UI2/WinScreen/Content/VBox" unique_id=451725558]
-visible = false
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-
-[node name="Hint" type="Label" parent="UI2/WinScreen/Content/VBox" unique_id=1190051232]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.65, 0.58, 0.52, 0.95)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 14
-text = "Tab — play again   ·   Esc — quit"
-
-[node name="LoseScreen" type="Control" parent="UI2" unique_id=492861595]
-visible = false
-z_index = 200
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_endscr")
-
-[node name="Dim" type="ColorRect" parent="UI2/LoseScreen" unique_id=1095770673]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.02, 0.01, 0, 0.52)
-
-[node name="Content" type="MarginContainer" parent="UI2/LoseScreen" unique_id=1303063714]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-theme_override_constants/margin_left = 56
-theme_override_constants/margin_top = 88
-theme_override_constants/margin_right = 56
-theme_override_constants/margin_bottom = 56
-
-[node name="VBox" type="VBoxContainer" parent="UI2/LoseScreen/Content" unique_id=1149956997]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-
-[node name="TitleTopPad" type="Control" parent="UI2/LoseScreen/Content/VBox" unique_id=593958058]
-layout_mode = 2
-
-[node name="TitleRow" type="HBoxContainer" parent="UI2/LoseScreen/Content/VBox" unique_id=766973795]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TitleLeftPad" type="Control" parent="UI2/LoseScreen/Content/VBox/TitleRow" unique_id=407111193]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="UI2/LoseScreen/Content/VBox/TitleRow" unique_id=1542449332]
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 0
-theme_override_colors/font_color = Color(0.9, 0.82, 0.72, 1)
-theme_override_colors/font_outline_color = Color(0.1, 0.06, 0.04, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 88
-text = "Game over"
-
-[node name="TitleSpacer" type="Control" parent="UI2/LoseScreen/Content/VBox" unique_id=1163169360]
-custom_minimum_size = Vector2(0, 52)
-layout_mode = 2
-
-[node name="RetryButton" type="Button" parent="UI2/LoseScreen/Content/VBox" unique_id=705946783]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Try again"
-
-[node name="BtnSep" type="Control" parent="UI2/LoseScreen/Content/VBox" unique_id=575079042]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="QuitButton" type="Button" parent="UI2/LoseScreen/Content/VBox" unique_id=1427187861]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.84, 0.75, 0.65, 1)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_end")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_end")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_end")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_end")
-text = "Quit"
-
-[node name="HintSep" type="Control" parent="UI2/LoseScreen/Content/VBox" unique_id=1147139222]
-visible = false
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-
-[node name="Hint" type="Label" parent="UI2/LoseScreen/Content/VBox" unique_id=1370637453]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.65, 0.58, 0.52, 0.95)
-theme_override_fonts/font = ExtResource("15_jerami")
-theme_override_font_sizes/font_size = 14
-text = "Tab — try again   ·   Esc — quit"
-
-[node name="DevUI" type="Control" parent="UI2" unique_id=1376824951]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI2/DevUI" unique_id=1458115569]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI2/DevUI/MarginContainer" unique_id=512530380]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 3
-text = "Dev Tools (press  \" + \"  to hide/show)
-
-Quit Game:			Esc
-Reload Game:		Tab
-Player Dash:	      	Shift"
-
-[node name="Fog" parent="UI2" unique_id=1597689475 instance=ExtResource("13_jj6qt")]
-
 [node name="bgm_player" type="AudioStreamPlayer2D" parent="." unique_id=1406976029]
 stream = SubResource("AudioStreamWAV_4eaec")
+volume_db = -2.0

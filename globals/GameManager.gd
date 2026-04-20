@@ -14,6 +14,10 @@ var current_game_state: STATE = STATE.Playing
 
 var collected_items: Array[Item] = []
 
+@export var win_delay_seconds: float = 3
+var _win_sequence_started: bool = false
+var _all_items_collected_emitted: bool = false
+
 
 func is_game_ended() -> bool:
 	return current_game_state == STATE.Won or current_game_state == STATE.Lost
@@ -28,6 +32,8 @@ func reset_for_new_run() -> void:
 	cosmetic_order.clear()
 	disabled_attacks.clear()
 	phase = Phase.None
+	_win_sequence_started = false
+	_all_items_collected_emitted = false
 
 
 ## Order the player picked up Handschuhe / Trompete / Brille (max 3).
@@ -75,6 +81,9 @@ func _sync_phase() -> void:
 		phase = Phase.TwoItems
 	else:
 		phase = Phase.AllItems
+		if _all_items_collected_emitted == false:
+			_all_items_collected_emitted = true
+			Signals.all_items_collected.emit()
 
 
 func get_equipped_cosmetic_tags() -> Dictionary:
@@ -122,7 +131,15 @@ func reduce_fear(item: Item) -> void:
 	current_fear = maxf(0.0, current_fear)
 	if current_fear <= 0.0 \
 			and current_game_state != STATE.Lost \
-			and current_game_state != STATE.Won:
-		current_game_state = STATE.Won
+			and current_game_state != STATE.Won \
+			and _win_sequence_started == false:
+		_win_sequence_started = true
 		Signals.game_won.emit()
+		call_deferred("_finish_win_after_delay")
 	Signals.item_collected.emit(item)
+
+
+func _finish_win_after_delay() -> void:
+	await get_tree().create_timer(maxf(0.0, win_delay_seconds)).timeout
+	if current_game_state != STATE.Lost:
+		current_game_state = STATE.Won

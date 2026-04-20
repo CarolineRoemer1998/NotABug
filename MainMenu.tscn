@@ -11,10 +11,13 @@ content_margin_right = 10.0
 content_margin_bottom = 6.0
 
 [node name="MainMenu" type="Control" unique_id=1050501974]
+z_index = 1000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -60,7 +63,6 @@ theme_override_constants/separation = 0
 
 [node name="TitleTopPad" type="Control" parent="Content/VBox" unique_id=1857070001]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 
 [node name="TitleRow" type="HBoxContainer" parent="Content/VBox" unique_id=1857070002]
@@ -68,7 +70,6 @@ layout_mode = 2
 
 [node name="TitleLeftPad" type="Control" parent="Content/VBox/TitleRow" unique_id=1857070003]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 
 [node name="Title" type="Label" parent="Content/VBox/TitleRow" unique_id=858071635]

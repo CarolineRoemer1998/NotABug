@@ -10,6 +10,7 @@ var _bodies: Array[Node2D] = []
 
 var _timer: Timer
 var _collision_shape: CollisionShape2D
+var _anim: AnimatedSprite2D
 
 
 func configure(duration: float, radius: float = -1.0) -> void:
@@ -25,9 +26,12 @@ func configure(duration: float, radius: float = -1.0) -> void:
 func _ready() -> void:
 	_timer = get_node_or_null("Timer") as Timer
 	_collision_shape = get_node_or_null("CollisionShape2D") as CollisionShape2D
+	_anim = get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
 
 	_timer.wait_time = tick_interval
 	_timer.start()
+	if _anim != null:
+		_anim.play()
 	queue_redraw()
 
 

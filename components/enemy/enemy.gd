@@ -136,6 +136,10 @@ var _hearing_freeze_left: float = 0.0
 @onready var sfx_projectile = $sfx_enemy_projectile
 @onready var sfx_aoe = $sfx_enemy_aoe
 
+@export var walk_sfx_interval: float = 0.36
+@export var walk_sfx_speed_threshold: float = 8.0
+var _walk_sfx_left: float = 0.0
+
 func _ready() -> void:	
 	add_to_group("Enemies")
 	
@@ -144,6 +148,8 @@ func _ready() -> void:
 	sfx_funny.stream = preload("res://sound/enemywalkfunny_468443__breviceps__squeaky-toy-1.wav")
 	sfx_projectile.stream = preload("res://sound/projektil_214891__fantozzi__the-big-squeak-15-schpunk-2.wav")
 	sfx_aoe.stream = preload("res://sound/aoe.wav")
+	if not Signals.all_items_collected.is_connected(_on_all_items_collected):
+		Signals.all_items_collected.connect(_on_all_items_collected)
 	
 	_build_waypoints()
 	far_attack_radius = minf(far_attack_radius, sight_distance)
@@ -186,6 +192,7 @@ func _physics_process(delta: float) -> void:
 	if GameManager.is_game_ended():
 		velocity = Vector2.ZERO
 		move_and_slide()
+		_update_walk_sfx(delta)
 		return
 	_tick_cooldowns(delta)
 	_update_sight(delta)
@@ -209,6 +216,38 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_update_stuck_recovery()
 	_update_animation()
+	_update_walk_sfx(delta)
+
+
+func _update_walk_sfx(delta: float) -> void:
+	_walk_sfx_left = maxf(0.0, _walk_sfx_left - delta)
+	var moving := velocity.length() >= walk_sfx_speed_threshold and _attack_lock <= 0.0 and state != State.LOOK
+	if GameManager.is_game_ended():
+		moving = false
+
+	var use_funny := GameManager.phase == GameManager.Phase.AllItems
+	var active_sfx: AudioStreamPlayer2D = sfx_walk
+	var inactive_sfx: AudioStreamPlayer2D = sfx_funny
+	if use_funny:
+		active_sfx = sfx_funny
+		inactive_sfx = sfx_walk
+
+	if moving:
+		if _walk_sfx_left <= 0.0:
+			_walk_sfx_left = walk_sfx_interval
+			if active_sfx:
+				active_sfx.pitch_scale = randf_range(0.95, 1.05)
+				active_sfx.play()
+	else:
+		_walk_sfx_left = 0.0
+		if active_sfx and active_sfx.playing:
+			active_sfx.stop()
+	if inactive_sfx and inactive_sfx.playing:
+		inactive_sfx.stop()
+
+
+func _on_all_items_collected() -> void:
+	pass
 
 
 func _tick_cooldowns(delta: float) -> void:
